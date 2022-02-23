@@ -1,0 +1,8 @@
+.grid-nav {
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #f1bec9;
+}
