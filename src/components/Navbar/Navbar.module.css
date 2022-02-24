@@ -1,8 +1,15 @@
-.grid-nav {
+.grid__nav {
     grid-area: nav;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     background-color: #f1bec9;
+}
+.item {
+    color: white;
+}
+
+.item.active {
+    color: #c369ff
 }

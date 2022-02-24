@@ -2,8 +2,3 @@
     grid-area: content;
     background-color: #b0aff1;
 }
-
-.profile__img {
-    display: flex;
-    flex-direction: column;
-}
