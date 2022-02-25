@@ -6,14 +6,24 @@ import Profile from "./components/Profile/Profile";
 import Test_ClassComponent from "./components/Test_ClassComponent";
 import Test_Input_ClassComponent from "./components/Test_Input_ClassComponent";
 import TestInputF from "./components/Test_Input_F";
+import Dialogs from "./components/Dialogs/Dialogs";
+import {Routes, Route, Link} from 'react-router-dom'
 
 
 function App() {
     return (
-        <div className="grid-container">
+        <div className='grid_container'>
             <Header/>
             <Navbar/>
-            <Profile/>
+            <div className='grid_container_content'>
+                <Routes>
+                    <Route path="profile" element={<Profile/>} />
+                    <Route path="dialogs" element={<Dialogs/>} />
+                    <Route path="*" element={<Profile/>} />
+                </Routes>
+                {/*<Profile/>*/}
+            </div>
+
             {/*<Test_ClassComponent count={5} />*/}
             {/*<Test_Input_ClassComponent name={"Peter"} />*/}
             {/*<TestInputF />*/}

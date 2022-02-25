@@ -1,4 +1,4 @@
-.grid-container {
+.grid_container {
     display: grid;
     width: 1920px;
     margin: 0 auto;
@@ -10,3 +10,7 @@
     grid-gap: 10px;
 }
 
+.grid_container_content {
+    grid-area: content;
+    background-color: #b0aff1;
+}
