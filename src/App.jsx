@@ -27,7 +27,6 @@ function App() {
                     <Route path='settings' element={<Settings/>} />
                     <Route path="*" element={<Profile/>} />
                 </Routes>
-                {/*<Profile/>*/}
             </div>
 
             {/*<Test_ClassComponent count={5} />*/}
