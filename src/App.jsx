@@ -29,9 +29,9 @@ function App(props) {
                 </Routes>
             </div>
 
-            {/*<Test_ClassComponent count={5} />*/}
-            {/*<Test_Input_ClassComponent name={"Peter"} />*/}
-            {/*<TestInputF />*/}
+{/*            <Test_ClassComponent count={5} />
+            <Test_Input_ClassComponent name={"Peter"} />
+            <TestInputF />*/}
         </div>
     );
 }

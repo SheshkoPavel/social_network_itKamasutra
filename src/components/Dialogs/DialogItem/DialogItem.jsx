@@ -7,7 +7,11 @@ const DialogItem = (props) => {
 
     return (
         <div >
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to={path + props.id}>{props.name}</NavLink>
+            <NavLink
+                className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`}
+                to={path + props.id}>
+                {props.name}
+            </NavLink>
         </div>
     );
 };

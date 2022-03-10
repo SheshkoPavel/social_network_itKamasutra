@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
+
+
 let dialogs = [
     {id: 1, name: "Paul"},
     {id: 2,name: "Den"},
@@ -27,6 +29,7 @@ let posts = [
     {id: 2, message: "Нормально ты заряжаешь", likesCount: 3},
     {id: 3, message: "Прокинул через пропсы", likesCount: 7}
 ];
+
 
 ReactDOM.render(
   <React.StrictMode>
