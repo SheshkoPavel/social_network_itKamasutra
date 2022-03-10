@@ -13,15 +13,15 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 
-function App() {
+function App(props) {
     return (
         <div className='grid_container'>
             <Header/>
             <Navbar/>
             <div className='grid_container_content'>
                 <Routes>
-                    <Route path="profile" element={<Profile/>} />
-                    <Route path="dialogs/*" element={<Dialogs/>} />
+                    <Route path="profile" element={<Profile posts={props.posts} />} />
+                    <Route path="dialogs/*" element={<Dialogs dialogs={props.dialogs} messages={props.messages} />} />
                     <Route path="news" element={<News/>} />
                     <Route path='music' element={<Music/>} />
                     <Route path='settings' element={<Settings/>} />
