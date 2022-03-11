@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -6,13 +6,20 @@ const MyPosts = (props) => {
 
     let postElements = props.state.posts.map((post) => (<Post message={post.message} likes={post.likesCount} />))
 
+    const newPostElement = useRef(null);
+
+    const addPost = () => {
+        console.log(newPostElement.current.value)
+    }
+
+
     return (
         <div className={classes.postsBlock}>
             <h3>Posts</h3>
             <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement} ></textarea>
                 <br/>
-                <button>Create post</button>
+                <button onClick={addPost}>Create post</button>
             </div>
             <div className={classes.posts}>
                 { postElements }

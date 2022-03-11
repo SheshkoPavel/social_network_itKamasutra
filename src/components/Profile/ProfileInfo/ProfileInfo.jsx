@@ -6,7 +6,7 @@ const ProfileInfo = (props) => {
         <div>
             <div>
                 <img
-                    src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
+                    src="https://i.yapx.ru/RGJru.jpg"
                     alt="main content"
                     style={{width: "100%", height: 350}}
                 />
