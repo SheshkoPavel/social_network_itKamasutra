@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message";
@@ -9,6 +9,12 @@ const Dialogs = (props) => {
     let dialogElements = props.state.dialogs.map(dialog => (<DialogItem name={dialog.name} id={dialog.id} />));
     let messagesElements = props.state.messages.map(m => (<Message message={m.message} />));
 
+    const messageFromInput = useRef(null)
+
+    const addMessage = () => {
+        console.log(messageFromInput.current.value)
+    }
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialog__Items}>
@@ -17,6 +23,13 @@ const Dialogs = (props) => {
 
             <div className={classes.messages}>
                 {messagesElements}
+            </div>
+            <div>
+                <input type="text"
+                       placeholder="Write smth"
+                       ref={messageFromInput}
+                />
+                <button onClick={addMessage} >Add message</button>
             </div>
         </div>
     );
