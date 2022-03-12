@@ -22,18 +22,18 @@ function App(props) {
             <div className='grid_container_content'>
                 <Routes>
                     <Route path="/" element={<Profile profilePage={props.state.profilePage}
-                                                      addPost={props.addPost}
-                                                      updateNewPostText={props.updateNewPostText}
-                    />} />
-                    <Route path="profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
-                    <Route path="dialogs/*" element={<Dialogs state={props.state.dialogPage} />} />
-                    <Route path="news" element={<News/>} />
-                    <Route path='music' element={<Music/>} />
-                    <Route path='settings' element={<Settings/>} />
+                                                      dispatch={props.dispatch}
+                    />}/>
+                    <Route path="profile"
+                           element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
+                    <Route path="dialogs/*" element={<Dialogs state={props.state.dialogPage}/>}/>
+                    <Route path="news" element={<News/>}/>
+                    <Route path='music' element={<Music/>}/>
+                    <Route path='settings' element={<Settings/>}/>
                 </Routes>
             </div>
 
-{/*            <Test_ClassComponent count={5} />
+            {/*            <Test_ClassComponent count={5} />
             <Test_Input_ClassComponent name={"Peter"} />
             <TestInputF />*/}
         </div>
