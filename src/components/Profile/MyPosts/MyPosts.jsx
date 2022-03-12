@@ -4,13 +4,15 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let postElements = props.state.posts.map((post) => (<Post message={post.message} likes={post.likesCount}/>))
+    let postElements = props.posts.map((post) => (<Post message={post.message} likes={post.likesCount}/>))
 
     const newPostElement = useRef(null);
     const addPost = () => {
+        props.addPost();
+    }
+    const onPostChange = () => {
         let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = '';
+        props.updateNewPostText(text);
     }
 
 
@@ -18,7 +20,7 @@ const MyPosts = (props) => {
         <div className={classes.postsBlock}>
             <h3>Posts</h3>
             <div>
-                <textarea ref={newPostElement}></textarea>
+                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
                 <br/>
                 <button onClick={addPost}>Create post</button>
             </div>
