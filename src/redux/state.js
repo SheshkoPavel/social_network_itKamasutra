@@ -1,6 +1,8 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let store = {
     _state: {
@@ -10,7 +12,7 @@ let store = {
                 {id: 2, message: "Нормально ты заряжаешь", likesCount: 3},
                 {id: 3, message: "Прокинул через пропсы", likesCount: 7}
             ],
-            newPostText: 'Hello'
+            newPostText: 'Type here'
         },
         dialogPage: {
             dialogs: [
@@ -27,7 +29,8 @@ let store = {
                 {id: 3, message: "How are you?"},
                 {id: 4, message: "Norm"},
                 {id: 5, message: "Yo-yo"}
-            ]
+            ],
+            newMessageBody: ''
         },
         sidebar: {}
     },
@@ -51,10 +54,18 @@ let store = {
             };
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state /*, this.addPost, this.updateNewPostText*/  );
+            this._callSubscriber(this._state);
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state  /*, this.addPost, this.updateNewPostText*/  );
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogPage.newMessageBody = action.newMessageBody;
+            this._callSubscriber(this._state);
+        } else if (action.type === SEND_MESSAGE) {
+            let newMessageBody = this._state.dialogPage.newMessageBody;
+            this._state.dialogPage.newMessageBody = '';
+            this._state.dialogPage.messages.push({id: 6, message: newMessageBody})
+            this._callSubscriber(this._state);
         }
     }
 }
@@ -62,6 +73,10 @@ let store = {
 export const addPostActionCreator = () =>  ({ type: ADD_POST })
 export const updateNewPostTextActionCreator = (text) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export const sendMessageCreator = () =>  ({ type: SEND_MESSAGE })
+export const updateNewMessageBodyCreator = (text) =>
+    ({ type: UPDATE_NEW_MESSAGE_BODY, newMessageBody: text })
 
 export default store;
 window.store = store;

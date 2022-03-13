@@ -2,17 +2,26 @@ import React, {useRef} from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/state";
 
 
 const Dialogs = (props) => {
 
-    let dialogElements = props.state.dialogs.map(dialog => (<DialogItem name={dialog.name} id={dialog.id} />));
-    let messagesElements = props.state.messages.map(m => (<Message message={m.message}  />));
+    let state = props.store.getState().dialogPage;
 
-    const messageFromInput = useRef(null)
+    let dialogElements = state.dialogs.map(dialog => (<DialogItem name={dialog.name} id={dialog.id} />));
+    let messagesElements = state.messages.map(m => (<Message message={m.message}  />));
 
-    const addMessage = () => {
-        console.log(messageFromInput.current.value)
+    let newMessageBody = state.newMessageBody;
+
+
+
+    const onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator());
+    }
+    const onNewMessageChange = (event) => {
+        let text = event.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(text));
     }
 
     return (
@@ -22,15 +31,21 @@ const Dialogs = (props) => {
             </div>
 
             <div className={classes.messages}>
-                {messagesElements}
+                <div>
+                    {messagesElements}
+                </div>
+                <div>
+                    <div>
+                    <input type="text"
+                           placeholder="Write smth"
+                           value={newMessageBody}
+                           onChange={ onNewMessageChange }
+                    />
+                    </div>
+                    <div><button onClick={onSendMessageClick} >Add message</button></div>
+                </div>
             </div>
-            <div>
-                <input type="text"
-                       placeholder="Write smth"
-                       ref={messageFromInput}
-                />
-                <button onClick={addMessage} >Add message</button>
-            </div>
+
         </div>
     );
 };
