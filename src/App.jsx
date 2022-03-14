@@ -21,11 +21,8 @@ function App(props) {
             <Navbar/>
             <div className='grid_container_content'>
                 <Routes>
-                    <Route path="/" element={<Profile profilePage={props.state.profilePage}
-                                                      dispatch={props.dispatch}
-                    />}/>
-                    <Route path="profile"
-                           element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
+                    <Route path="/" element={<Profile store={props.store} />}/>
+                    <Route path="profile" element={<Profile store={props.store} />}/>
                     <Route path="dialogs/*" element={<Dialogs store={props.store} />}/>
                     <Route path="news" element={<News/>}/>
                     <Route path='music' element={<Music/>}/>
