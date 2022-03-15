@@ -10,6 +10,8 @@ const Navbar = () => {
             <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/news">News</NavLink>
             <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/music">Music</NavLink>
             <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/settings">Settings</NavLink>
+            <br/>
+            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/users">Find Users</NavLink>
         </nav>
     );
 };
