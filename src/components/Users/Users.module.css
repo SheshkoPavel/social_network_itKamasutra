@@ -1,3 +1,13 @@
 .avatar {
     height: 100px;
 }
+
+.selectedPage {
+    color: #f8ffba;
+    margin: 5px;
+    font-weight: bolder;
+}
+
+.page {
+    margin: 5px;
+}

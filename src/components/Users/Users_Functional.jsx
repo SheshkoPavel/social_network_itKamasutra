@@ -1,9 +1,10 @@
+/*
 import React from 'react';
 import classes from "./Users.module.css";
 import axios from "axios";
 import userAvatar from "./../../assets/images/cat_ava.jpg"
 
-const Users = (props) => {
+const Users_Functional = (props) => {
 
     let getUsers = () => {
         if (props.users.length === 0) {
@@ -64,4 +65,4 @@ const Users = (props) => {
     );
 };
 
-export default Users;
+export default Users_Functional;*/
