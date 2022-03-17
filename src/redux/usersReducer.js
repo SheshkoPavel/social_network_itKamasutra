@@ -8,7 +8,8 @@ let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 2
+    currentPage: 1,
+    isFetching: false
 }
 
 
@@ -36,7 +37,7 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         }
-        // в  SET_USERS: return {...state, users: [...action.users]} не будет дублировать код
+
         case SET_USERS:
             return {
                 ...state,
