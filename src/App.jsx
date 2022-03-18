@@ -1,8 +1,6 @@
 import './App.css';
 import React from "react";
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
 import Test_ClassComponent from "./components/Test_ClassComponent";
 import Test_Input_ClassComponent from "./components/Test_Input_ClassComponent";
 import TestInputF from "./components/Test_Input_F";
@@ -13,13 +11,14 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 function App(props) {
 
     return (
         <div className='grid_container'>
-            <Header/>
+            <HeaderContainer />
             <Navbar/>
             <div className='grid_container_content'>
                 <Routes>
