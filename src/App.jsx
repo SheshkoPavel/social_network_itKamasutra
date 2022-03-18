@@ -12,6 +12,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 function App(props) {
@@ -22,8 +23,8 @@ function App(props) {
             <Navbar/>
             <div className='grid_container_content'>
                 <Routes>
-                    <Route path="/" element={<Profile  />}/>
-                    <Route path="/profile" element={<Profile  />}/>
+                    <Route path="/" element={<ProfileContainer  />}/>
+                    <Route path="/profile/*" element={<ProfileContainer  />}/>
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>

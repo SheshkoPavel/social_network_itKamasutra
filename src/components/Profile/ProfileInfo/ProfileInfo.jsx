@@ -1,7 +1,13 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
+import Preloader from "../../Common/Preloader/Preloader";
 
 const ProfileInfo = (props) => {
+
+    if (!props.profile) {
+        return <Preloader/>
+    }
+
     return (
         <div>
             <div>
@@ -11,13 +17,31 @@ const ProfileInfo = (props) => {
                     style={{width: "100%", height: 350}}
                 />
             </div>
-            <div className={classes.descriptionBlock}>
+            <div >
                 <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYtfZRhbGQtq2BapB2MXJfWIO2QriO5Wx3qQ&usqp=CAU"
+                    src={props.profile.photos.large}
                     alt="avatar"
                     style={{borderRadius: 80}}
                 />
-                Description
+
+                <div className={classes.descriptionBlock}>
+                    Name: {props.profile.fullName} <br/>
+                    About: {props.profile.aboutMe} <br/>
+                    Contacts:
+
+                    facebook: {props.profile.contacts.facebook} <br/>
+                    website: {props.profile.contacts.website} <br/>
+                    VK: {props.profile.contacts.vk} <br/>
+                    twitter: {props.profile.contacts.twitter} <br/>
+                    instagram: {props.profile.contacts.instagram} <br/>
+                    youtube: {props.profile.contacts.youtube} <br/>
+                    github: {props.profile.contacts.github} <br/>
+                    mainLink: {props.profile.contacts.mainLink} <br/><br/>
+                    Looking for a job: {props.profile.lookingForAJob === true ? props.profile.lookingForAJobDescription : "No"} <br/>
+                    {} <br/>
+
+
+                </div>
             </div>
         </div>
     );
