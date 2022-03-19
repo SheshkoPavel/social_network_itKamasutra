@@ -2,6 +2,7 @@ import React from 'react';
 import classes from "./Users.module.css";
 import userAvatar from "../../assets/images/cat_ava.jpg";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
 
@@ -38,8 +39,45 @@ const Users = (props) => {
                         </div>
                         <div>
                             {el.followed
-                                ? <button onClick={() => props.unfollowUser(el.id)}>Unfollow</button>
-                                : <button onClick={() => props.followUser(el.id)}>Follow</button>}
+                                ? <button onClick={() => {
+
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
+                                        {
+                                            withCredentials: true,
+                                            headers: {
+                                                "API-KEY" : "f8ad98d1-7488-475c-a890-9534f68a3e9c"
+                                            }
+                                        })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0){
+                                                props.unfollowUser(el.id);
+                                            }
+                                        });
+
+
+                                    }
+                                }>
+                                    Unfollow</button>
+
+                                : <button onClick={() => {
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
+                                        {},
+                                        {
+                                            withCredentials: true,
+                                            headers: {
+                                                "API-KEY" : "f8ad98d1-7488-475c-a890-9534f68a3e9c"
+                                            }
+                                        })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0){
+                                                props.followUser(el.id);
+                                            }
+
+                                        });
+
+                                    }
+                                }>Follow</button>}
 
                         </div>
                     </span>
