@@ -2,7 +2,7 @@ import React from 'react';
 import classes from "./Users.module.css";
 import userAvatar from "../../assets/images/cat_ava.jpg";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
 
@@ -40,44 +40,27 @@ const Users = (props) => {
                         <div>
                             {el.followed
                                 ? <button onClick={() => {
-
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY" : "f8ad98d1-7488-475c-a890-9534f68a3e9c"
-                                            }
-                                        })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0){
+                                    usersAPI.unfollowUser(el.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0){
                                                 props.unfollowUser(el.id);
                                             }
                                         });
-
-
                                     }
                                 }>
                                     Unfollow</button>
 
                                 : <button onClick={() => {
-
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
-                                        {},
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY" : "f8ad98d1-7488-475c-a890-9534f68a3e9c"
-                                            }
-                                        })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0){
+                                    usersAPI.followUser(el.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0){
                                                 props.followUser(el.id);
                                             }
-
                                         });
 
                                     }
-                                }>Follow</button>}
+                                }> Follow </button>
+                            }
 
                         </div>
                     </span>
