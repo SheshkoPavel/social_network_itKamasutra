@@ -3,6 +3,7 @@ import classes from "./Users.module.css";
 import userAvatar from "../../assets/images/cat_ava.jpg";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
+import {toggleIsFollowingInProgress} from "../../redux/usersReducer";
 
 const Users = (props) => {
 
@@ -37,25 +38,31 @@ const Users = (props) => {
                                 } alt="user avatar"/>
                             </NavLink>
                         </div>
+
                         <div>
                             {el.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.isFollowingInProgress.some(id => id === el.id)} onClick={() => {
+
+                                    props.toggleIsFollowingInProgress(true, el.id);
                                     usersAPI.unfollowUser(el.id)
                                         .then(data => {
                                             if (data.resultCode === 0){
                                                 props.unfollowUser(el.id);
                                             }
+                                            props.toggleIsFollowingInProgress(false, el.id);
                                         });
                                     }
                                 }>
                                     Unfollow</button>
 
-                                : <button onClick={() => {
+                                : <button disabled={props.isFollowingInProgress.some(id => id === el.id)} onClick={() => {
+                                    props.toggleIsFollowingInProgress(true, el.id);
                                     usersAPI.followUser(el.id)
                                         .then(data => {
                                             if (data.resultCode === 0){
                                                 props.followUser(el.id);
                                             }
+                                            props.toggleIsFollowingInProgress(false, el.id);
                                         });
 
                                     }
