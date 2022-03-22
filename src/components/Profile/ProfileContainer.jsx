@@ -33,9 +33,7 @@ const ProfileURLMatch = (props) => {
 }
 
 
-
 export default compose(
     connect(mapStateToProps,{ getUserProfile }),
-    withAuthRedirect
 )(ProfileURLMatch)
 

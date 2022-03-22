@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -11,19 +12,21 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div>
+{/*            <div>
                 <img
                     src="https://i.yapx.ru/RGJru.jpg"
                     alt="main content"
                     style={{width: "100%", height: 350}}
                 />
-            </div>
+            </div>*/}
             <div >
                 <img
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
                     alt="avatar"
                     style={{borderRadius: 80, width: 150}}
                 />
+
+                <ProfileStatus status={'Hello'} />
 
                 <div className={classes.descriptionBlock}>
                     Name: {props.profile.fullName} <br/>
