@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 const LoginForm = (props) => {
 
 
-        const { register, handleSubmit, watch, formState: { errors } } = useForm();
+        const { register, handleSubmit, formState: { errors } } = useForm();
         const onSubmit = data => console.log(data);
 
 
@@ -12,6 +12,8 @@ const LoginForm = (props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input placeholder='Login' {...register("login", {required: true})} />
                 <div><input placeholder='password' {...register("password", { required: true })} /></div>
+                    {errors.password?.type === 'required' && "You must enter a password"}
+                    <br/>
                 <div><input type="checkbox" {...register("rememberMe", { required: false })}/> remember me </div>
                 <input type="submit" />
             </form>

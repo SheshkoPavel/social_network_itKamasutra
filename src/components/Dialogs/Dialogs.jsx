@@ -28,15 +28,6 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     <AddMessageForm sendMessage={props.sendMessage} />
-
-                    {/*<div>
-                    <input type="text"
-                           placeholder="Write smth"
-                           value={newMessageBody}
-                           onChange={ onNewMessageChange }
-                    />
-                    </div>
-                    <div><button onClick={onSendMessageClick} >Add message</button></div>*/}
                 </div>
             </div>
 
