@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message";
 import { Navigate } from "react-router-dom";
+import AddMessageForm from "./AddMessageForm";
 
 const Dialogs = (props) => {
 
@@ -10,16 +11,6 @@ const Dialogs = (props) => {
 
     let dialogElements = state.dialogs.map(dialog => (<DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />));
     let messagesElements = state.messages.map(m => (<Message message={m.message} key={m.id} />));
-
-    let newMessageBody = state.newMessageBody;
-
-    const onSendMessageClick = () => {
-        props.sendMessage();
-    };
-    const onNewMessageChange = (event) => {
-        let text = event.target.value;
-        props.updateNewMessageBody(text);
-    };
 
     if (props.isAuth === false) {
       return  <Navigate to={"/login"} />
@@ -36,14 +27,16 @@ const Dialogs = (props) => {
                     {messagesElements}
                 </div>
                 <div>
-                    <div>
+                    <AddMessageForm sendMessage={props.sendMessage} />
+
+                    {/*<div>
                     <input type="text"
                            placeholder="Write smth"
                            value={newMessageBody}
                            onChange={ onNewMessageChange }
                     />
                     </div>
-                    <div><button onClick={onSendMessageClick} >Add message</button></div>
+                    <div><button onClick={onSendMessageClick} >Add message</button></div>*/}
                 </div>
             </div>
 
