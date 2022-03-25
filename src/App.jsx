@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Test_ClassComponent from "./components/Test_ClassComponent";
 import Test_Input_ClassComponent from "./components/Test_Input_ClassComponent";
@@ -13,9 +13,14 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
+import {connect} from "react-redux";
+import {getAuthUserData} from "./redux/authReducer";
 
 
 function App(props) {
+
+
+    useEffect(() => getAuthUserData, [])
 
     return (
         <div className='grid_container'>
@@ -42,4 +47,4 @@ function App(props) {
     );
 }
 
-export default App;
+export default connect(null, {getAuthUserData})(App);

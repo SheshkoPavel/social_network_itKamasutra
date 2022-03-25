@@ -12,13 +12,7 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-{/*            <div>
-                <img
-                    src="https://i.yapx.ru/RGJru.jpg"
-                    alt="main content"
-                    style={{width: "100%", height: 350}}
-                />
-            </div>*/}
+
             <div >
                 <img
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
@@ -41,8 +35,10 @@ const ProfileInfo = (props) => {
                     youtube: {props.profile.contacts.youtube} <br/>
                     github: {props.profile.contacts.github} <br/>
                     mainLink: {props.profile.contacts.mainLink} <br/><br/>
-                    Looking for a job: {props.profile.lookingForAJob === true ? props.profile.lookingForAJobDescription : "No"} <br/>
-                    {} <br/>
+                    Looking for a job: {props.profile.lookingForAJob === true
+                        ? props.profile.lookingForAJobDescription
+                        : "Yes, i want work in IntexSoft"} <br/>
+                    <br/>
 
 
                 </div>
