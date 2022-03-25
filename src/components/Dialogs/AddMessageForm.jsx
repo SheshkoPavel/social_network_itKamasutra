@@ -11,6 +11,8 @@ const AddMessageForm = (props) => {
         props.sendMessage(data.newMessageBody);
     };
 
+   // console.log(watch("newMessageBody"));
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <input placeholder="Write smth" {...register("newMessageBody", {required: true})} />
