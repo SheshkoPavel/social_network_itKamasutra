@@ -3,6 +3,7 @@ import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
 import ProfileStatus from "./ProfileStatus";
+import {updateStatus} from "../../../redux/profileReducer";
 
 const ProfileInfo = (props) => {
 
@@ -20,7 +21,7 @@ const ProfileInfo = (props) => {
                     style={{borderRadius: 80, width: 150}}
                 />
 
-                <ProfileStatus status={'Hello'} />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 
                 <div className={classes.descriptionBlock}>
                     Name: {props.profile.fullName} <br/>
