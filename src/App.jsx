@@ -20,7 +20,7 @@ import {getAuthUserData} from "./redux/authReducer";
 function App(props) {
 
 
-    useEffect(() => getAuthUserData, [])
+    useEffect(() => getAuthUserData, []);
 
     return (
         <div className='grid_container'>

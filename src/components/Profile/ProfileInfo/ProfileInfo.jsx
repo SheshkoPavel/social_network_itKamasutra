@@ -3,7 +3,6 @@ import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
 import ProfileStatus from "./ProfileStatus";
-import {updateStatus} from "../../../redux/profileReducer";
 
 const ProfileInfo = (props) => {
 

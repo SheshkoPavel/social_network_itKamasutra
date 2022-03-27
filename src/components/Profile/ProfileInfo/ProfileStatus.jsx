@@ -1,6 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {getAuthUserData} from "../../../redux/authReducer";
 
 const ProfileStatus = (props) => {
+
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status]);
 
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
@@ -18,17 +23,15 @@ const ProfileStatus = (props) => {
             <div>
                 { editMode === false
                     ?   <div>
-                            <span onDoubleClick={() =>{setEditMode(true)} } > {props.status}</span>
+                            <span onDoubleClick={() =>{setEditMode(true)} } > {props.status || "waiting status"}</span>
                         </div>
 
                     :   <div>
-                            <input autoFocus={ true } onMouseLeave={deactivateEditMode} onChange={onStatusChange} value={status} />
+                            <input autoFocus={ true } onBlur={deactivateEditMode} onChange={onStatusChange} value={status} />
                         </div>
                 }
-
             </div>
         );
-
 };
 
 export default ProfileStatus;

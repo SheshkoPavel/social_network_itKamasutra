@@ -19,7 +19,7 @@ const Login = (props) => {
         </div>
     );
     }
-    return <Navigate to={'/profile'}/>
+    return <Navigate to={'/profile/22856'}/>
 };
 
 
