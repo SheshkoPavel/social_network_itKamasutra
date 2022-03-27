@@ -1,9 +1,6 @@
 import './App.css';
 import React, {useEffect} from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Test_ClassComponent from "./components/Test_ClassComponent";
-import Test_Input_ClassComponent from "./components/Test_Input_ClassComponent";
-import TestInputF from "./components/Test_Input_F";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -19,8 +16,7 @@ import {getAuthUserData} from "./redux/authReducer";
 
 function App(props) {
 
-
-    useEffect(() => getAuthUserData, []);
+    useEffect(() => props.getAuthUserData(), []);
 
     return (
         <div className='grid_container'>
@@ -40,9 +36,6 @@ function App(props) {
                 </Routes>
             </div>
 
-{/*            <Test_ClassComponent count={5} />
-            <Test_Input_ClassComponent name={"Peter"} />
-            <TestInputF />*/}
         </div>
     );
 }
