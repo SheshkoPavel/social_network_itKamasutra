@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {getAuthUserData} from "../../../redux/authReducer";
 
 const ProfileStatus = (props) => {
 
