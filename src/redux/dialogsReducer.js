@@ -1,4 +1,4 @@
-const SEND_MESSAGE = 'SEND_MESSAGE';
+const dialogs_SEND_MESSAGE = 'dialogs_SEND_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -19,9 +19,8 @@ let initialState = {
 };
 
 const  dialogsReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case SEND_MESSAGE: {
+        case dialogs_SEND_MESSAGE: {
             let newMessageBody = action.newMessageBody;
             return {
                 ...state,
@@ -32,7 +31,6 @@ const  dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageCreator = (newMessageBody) =>  ({ type: SEND_MESSAGE, newMessageBody })
-
+export const sendMessageCreator = (newMessageBody) =>  ({ type: dialogs_SEND_MESSAGE, newMessageBody })
 
 export default dialogsReducer;
