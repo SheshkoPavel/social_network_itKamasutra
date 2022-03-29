@@ -1,18 +1,22 @@
 import './App.css';
-import React, {useEffect} from "react";
+import React, {useEffect, Suspense} from "react";
 import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {getAuthUserData} from "./redux/authReducer";
+import Preloader from "./components/Common/Preloader/Preloader";
+/*import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";*/
 
+//Ленивая загрузка компонент. Обязательно располагать после всех импортов
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 function App(props) {
 
@@ -23,6 +27,7 @@ function App(props) {
             <HeaderContainer />
             <Navbar/>
             <div className='grid_container_content'>
+                <Suspense fallback={<Preloader/>}>
                 <Routes>
                     <Route path="/" element={<ProfileContainer  />}/>
                     <Route path="/profile/*" element={<ProfileContainer  />}/>
@@ -34,6 +39,7 @@ function App(props) {
                     <Route path='/users' element={<UsersContainer /> }/>
                     <Route path='/login' element={<Login /> }/>
                 </Routes>
+                </Suspense>
             </div>
 
         </div>
