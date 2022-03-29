@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
+
+    const [editMode, setEditMode] = useState(false);
 
     if (!props.profile) {
         return <Preloader/>
@@ -24,9 +26,10 @@ const ProfileInfo = (props) => {
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
                     alt={`user avatar ${props.profile.userId}`}
                     style={{borderRadius: 80, width: 150}}
+                    onDoubleClick={() =>{setEditMode(true)} }
                 />
-                { props.profile.userId === 22856
-                    ? <div><input type="file"  onChange={onProfilePhotoSelected}  /></div>
+                { editMode === true && props.profile.userId === 22856
+                    ? <div><input type="file"  onChange={onProfilePhotoSelected} onClick={() => setEditMode(false)} /></div>
                     : null
                 }
 
