@@ -22,7 +22,7 @@ const ProfileStatus = (props) => {
             <div>
                 { editMode === false
                     ?   <div>
-                            <span onDoubleClick={() =>{setEditMode(true)} } > {props.status || "no status yet"}</span>
+                            <span style={{fontStyle: "italic" }} onDoubleClick={() =>{setEditMode(true)} } > {props.status || "no status yet"}</span>
                         </div>
 
                     :   <div>

@@ -10,6 +10,12 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
 
+    const onProfilePhotoSelected = (e) => {
+        if(e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
     return (
         <div>
 
@@ -19,6 +25,10 @@ const ProfileInfo = (props) => {
                     alt={`user avatar ${props.profile.userId}`}
                     style={{borderRadius: 80, width: 150}}
                 />
+                { props.profile.userId === 22856
+                    ? <div><input type="file"  onChange={onProfilePhotoSelected}  /></div>
+                    : null
+                }
 
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 
