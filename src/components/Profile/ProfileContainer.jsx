@@ -7,8 +7,8 @@ import {compose} from "redux";
 
 const ProfileURLMatch = (props) => {
     const match = useMatch('/profile/:userId/');
-    return <ProfileContainer {...props} match={match} />;
-}
+    return <ProfileContainer {...props} match={match}/>;
+};
 
 const ProfileContainer = (props) => {
 
@@ -16,19 +16,12 @@ const ProfileContainer = (props) => {
         let userId = props.match ? props.match.params.userId : 22856;
         props.getUserProfile(userId);
         props.getStatus(userId);
-    }, [props.match.params.userId]);
+    }, [props.match]);
 
-/*    componentDidMount() {
-        let userId = this.props.match ? this.props.match.params.userId : 22856;
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
-    }*/
-
-        return (
-            <Profile {...props} profile={props.profile} status={props.status}
-                     updateStatus={props.updateStatus} />
-        );
-
+    return (
+        <Profile {...props} profile={props.profile} status={props.status}
+                 updateStatus={props.updateStatus}/>
+    );
 };
 
 const mapStateToProps = (state) => ({
@@ -36,9 +29,7 @@ const mapStateToProps = (state) => ({
     status: state.profilePage.status
 });
 
-
-
 export default compose(
-    connect(mapStateToProps,{ getUserProfile, getStatus, updateStatus }),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
 )(ProfileURLMatch)
 
