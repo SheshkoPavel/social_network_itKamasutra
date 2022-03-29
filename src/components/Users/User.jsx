@@ -5,7 +5,7 @@ import userAvatar from "../../assets/images/cat_ava.jpg";
 
 const User = (props) => {
     return (
-        <div>
+        <div style={{marginBottom: 20}}>
             <div>
                 <span>
                         <div>
@@ -16,7 +16,7 @@ const User = (props) => {
                                     props.user.photos.small != null
                                         ? props.user.photos.small
                                         : userAvatar
-                                } alt="user avatar"/>
+                                } alt={`user avatar ${props.user.id}`}/>
                             </NavLink>
                         </div>
 
@@ -49,12 +49,12 @@ const User = (props) => {
                             </div>
                         </span>
                         <span>
-                            <div>
+{/*                            <div>
                                 {"el.location.country"}
                             </div>
                             <div>
                                 {"el.location.city"}
-                            </div>
+                            </div>*/}
                         </span>
 
                     </span>

@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
             <div >
                 <img
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
-                    alt="avatar"
+                    alt={`user avatar ${props.profile.userId}`}
                     style={{borderRadius: 80, width: 150}}
                 />
 
