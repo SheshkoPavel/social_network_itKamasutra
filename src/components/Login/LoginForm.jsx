@@ -1,16 +1,13 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 
-
 const LoginForm = (props) => {
-
 
         const { register, handleSubmit, formState: { errors } } = useForm({});
         const onSubmit = data => {
-            props.login(data.email, data.password, data.rememberMe);
 
+            props.login(data.email, data.password, data.rememberMe, data.captcha);
         }
-
 
         return (
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -21,10 +18,19 @@ const LoginForm = (props) => {
                 <div style={{color: "rebeccapurple"}}>    {errors.password?.type === 'required' && "You must enter a password"} </div>
 
                 <div ><input type="checkbox" {...register("rememberMe", { required: false })}/> remember me </div>
-                <input type="submit" />
+
+
+                {
+                        props.captcha ? <div>   <br/>
+                                                <img src={props.captcha.captcha} /><br/>
+                                                Please, enter the captcha <br/>
+                                                <input type="text" {...register("captcha", {required: true})} />
+                                        </div>
+                                        : null
+                }
+                    <input type="submit" />
             </form>
         );
-
 };
 
 export default LoginForm;

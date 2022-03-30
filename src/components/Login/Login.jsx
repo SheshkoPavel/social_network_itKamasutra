@@ -5,9 +5,9 @@ import  {login} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 
 const mapStateToProps = (state) => ({
-    isAuth : state.auth.isAuth
+    isAuth : state.auth.isAuth,
+    captcha: state.auth.captcha
 });
-
 
 const Login = (props) => {
 
@@ -15,7 +15,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login please</h1>
-            <LoginForm login={props.login} />
+            <LoginForm login={props.login} captcha={props.captcha} />
         </div>
     );
     }
