@@ -22,7 +22,7 @@ const LoginForm = (props) => {
 
                 {
                         props.captcha ? <div>   <br/>
-                                                <img src={props.captcha.captcha} /><br/>
+                                                <img src={props.captcha.captcha} alt={'captcha'} /><br/>
                                                 Please, enter the captcha <br/>
                                                 <input type="text" {...register("captcha", {required: true})} />
                                         </div>
