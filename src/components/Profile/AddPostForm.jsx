@@ -13,8 +13,8 @@ const AddPostForm = (props) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <textarea placeholder="Write smth" {...register("newPostText", {required: true})} />
-            {errors.newPostText?.type === 'required' && "You must write something"}
-            <br/>
+            <div style={{color: "rebeccapurple"}}>{errors.newPostText?.type === 'required' && "You must write something"}</div>
+
             <input type="submit" />
         </form>
     );
