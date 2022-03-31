@@ -4,7 +4,7 @@ import {
     setCurrentPage,
     toggleIsFollowingInProgress,
     getUsersThunkCreator, follow, unFollow
-} from "../../redux/usersReducer";
+} from "../../redux/usersReducer.ts";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
