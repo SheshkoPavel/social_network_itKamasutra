@@ -3,7 +3,15 @@ import {authAPI, securityAPI} from "../api/api";
 const auth_SET_USER_DATA = 'auth_SET_USER_DATA';
 const auth_GET_CAPTCHA_URL = 'auth_GET_CAPTCHA_URL';
 
-let initialState = {
+export type InitialStateType = {
+    userId: number | null,
+    login: string | null,
+    email: string | null,
+    isAuth: boolean,
+    captcha: string | null
+}
+
+let initialState: InitialStateType = {
     userId: null,
     login: null,
     email: null,
@@ -11,7 +19,7 @@ let initialState = {
     captcha: null
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case auth_SET_USER_DATA:
             return {
@@ -30,13 +38,28 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+type SetAuthUserDataActionType = {
+    type: typeof auth_SET_USER_DATA,  //Указал явно, что сюда можно запихнуть только то, что в этой константе
+    payload: {
+        userId: number,
+        email: string,
+        login: string,
+        isAuth: boolean
+    }
+}
+type GetCaptchaActionType = {
+    type: typeof auth_GET_CAPTCHA_URL,
+    captcha: string
+}
+
+
+export const setAuthUserData = (userId, email, login, isAuth): SetAuthUserDataActionType => ({
     type: auth_SET_USER_DATA,
     payload: {userId, email, login, isAuth}
 });
-export const getCaptcha = (captcha) => ({
+export const getCaptcha = (captcha): GetCaptchaActionType => ({
     type: auth_GET_CAPTCHA_URL,
-    captcha: {captcha}
+    captcha: captcha
 });
 
 

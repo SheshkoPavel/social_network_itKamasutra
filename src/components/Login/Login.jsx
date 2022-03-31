@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
-import  {login} from "../../redux/authReducer";
+import  {login} from "../../redux/authReducer.ts";
 import {Navigate} from "react-router-dom";
 
 const mapStateToProps = (state) => ({

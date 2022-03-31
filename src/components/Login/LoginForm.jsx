@@ -19,10 +19,9 @@ const LoginForm = (props) => {
 
                 <div ><input type="checkbox" {...register("rememberMe", { required: false })}/> remember me </div>
 
-
                 {
                         props.captcha ? <div>   <br/>
-                                                <img src={props.captcha.captcha} alt={'captcha'} /><br/>
+                                                <img src={props.captcha} alt={'captcha'} /><br/>
                                                 Please, enter the captcha <br/>
                                                 <input type="text" {...register("captcha", {required: true})} />
                                         </div>
