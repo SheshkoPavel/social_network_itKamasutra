@@ -1,6 +1,8 @@
-import {authAPI, securityAPI} from "../api/api";
+// @ts-ignore
+import {authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI} from "../api/api.ts";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./redux-store";
+
 
 const auth_SET_USER_DATA = 'auth_SET_USER_DATA';
 const auth_GET_CAPTCHA_URL = 'auth_GET_CAPTCHA_URL';
@@ -68,17 +70,17 @@ export const getCaptcha = (captcha: string): GetCaptchaActionType => ({
 });
 
 //Thunks
-type ThunkType = ThunkAction<Promise<void>, AppStateType, any, ActionsTypes>
+type ThunkType = ThunkAction<void, AppStateType, any, ActionsTypes>
 
-export const getAuthUserData = (): ThunkAction<Promise<void>, AppStateType, any, ActionsTypes> =>
+export const getAuthUserData = (): ThunkAction<void, AppStateType, any, ActionsTypes> =>
     async (dispatch) => {
         try {
             let response = await authAPI.me();
-            if (response.data.resultCode === 0) {
+            if (response.data.resultCode === ResultCodesEnum.Success) {
                 let {id, login, email} = response.data.data;
                 dispatch(setAuthUserData(id, email, login, true));
             }
-            if (response.data.resultCode === 1) {
+            if (response.data.resultCode === ResultCodesEnum.Error) {
                 console.log('You are not authorized');
             }
         } catch (error) {
@@ -90,10 +92,10 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     async (dispatch) => {
         try {
             let response = await authAPI.login(email, password, rememberMe, captcha);
-            if (response.data.resultCode === 0) {
+            if (response.data.resultCode === ResultCodesEnum.Success) {
                 dispatch(getAuthUserData());
             }
-            if (response.data.resultCode === 10) {
+            if (response.data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
                 dispatch(getCaptchaURL());
             }
         } catch (error) {
@@ -105,7 +107,7 @@ export const logout = (): ThunkType =>
     async (dispatch) => {
         try {
             const response = await authAPI.logout();
-            if (response.data.resultCode === 0) {
+            if (response.data.resultCode === ResultCodesEnum.Success) {
                 dispatch(setAuthUserData(null, null, null, false));
             }
         } catch (error) {

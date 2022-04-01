@@ -23,9 +23,9 @@ const ProfileInfo = (props) => {
 
             <div >
                 <img
+                    className={'user_avatar'}
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
                     alt={`user avatar ${props.profile.userId}`}
-                    style={{borderRadius: 80, width: 150}}
                     onDoubleClick={() =>{setEditMode(true)} }
                 />
                 { editMode === true && props.profile.userId === 22856
