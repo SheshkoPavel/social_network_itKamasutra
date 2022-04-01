@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatus from "./ProfileStatus.tsx";
 
 const ProfileInfo = (props) => {
 

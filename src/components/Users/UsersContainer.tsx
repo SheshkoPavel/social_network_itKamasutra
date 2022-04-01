@@ -1,24 +1,44 @@
-import React from 'react';
+import * as React from 'react'
 import {connect} from "react-redux";
-import {
-    setCurrentPage,
-    toggleIsFollowingInProgress,
-    getUsersThunkCreator, follow, unFollow
-} from "../../redux/usersReducer.ts";
-import Users from "./Users";
+// @ts-ignore
+import {setCurrentPage, toggleIsFollowingInProgress, getUsersThunkCreator, follow, unFollow} from "../../redux/usersReducer.ts";
+// @ts-ignore
+import Users from "./Users.tsx";
 import Preloader from "../Common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {UserType} from "../../types/types";
+import {AppStateType} from "../../redux/redux-store";
+
+type MapStatePropsType = {
+    isAuth: boolean
+    users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    isFetching: boolean
+    isFollowingInProgress: Array<number>
+}
+
+type MapDispatchPropsType = {
+    setCurrentPage: (pageNumber: number) => void
+    toggleIsFollowingInProgress: () => void
+    follow: (userId: number) => void
+    unFollow: (userId: number) => void
+    getUsers: (currentPage: number, pageSize: number) => void
+}
 
 
-class UsersContainer extends React.Component {
+type PropsType = MapStatePropsType & MapDispatchPropsType
+
+class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber: number) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.getUsers(pageNumber, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     render() {
@@ -40,7 +60,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType | any) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,

@@ -1,7 +1,11 @@
 import {applyMiddleware, combineReducers,  createStore} from "redux";
+// @ts-ignore
 import profileReducer from "./profileReducer.ts";
+// @ts-ignore
 import dialogsReducer from "./dialogsReducer.ts";
+// @ts-ignore
 import usersReducer from "./usersReducer.ts";
+// @ts-ignore
 import authReducer from "./authReducer.ts";
 import thunkMiddleware from "redux-thunk";
 
@@ -18,13 +22,15 @@ sagaMiddleware.run(rootSaga)
 
 Look at lessons of list we create. Also, we need create root.saga.ts  */
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer
-});
+})
 
+type RootReducerType = typeof rootReducer
+export type AppStateType = ReturnType<RootReducerType>
 
 /* // With Chrome extension, but work with bugs
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -32,8 +38,10 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddle
 */
 
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
-window.store = store;
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-export default store;
+// @ts-ignore
+window.store = store
+
+export default store
