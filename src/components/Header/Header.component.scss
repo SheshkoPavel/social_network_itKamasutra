@@ -1,0 +1,21 @@
+.grid_header {
+    grid-area: header;
+    background-color: #90e0e0;
+
+    .img {
+        height: auto;
+        width: 100px;
+    }
+}
+
+.loginBlock {
+    float: right;
+
+    .block_text {
+        text-align: right;
+
+        .bold {
+            font-weight: bold;
+        }
+    }
+}
