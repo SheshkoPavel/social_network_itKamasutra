@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {ChangeEvent, useEffect, useState} from 'react';
+import './ProfileStatus.scss'
 
 type PropsType = {
     status: string
@@ -28,7 +29,7 @@ const ProfileStatus: React.FC<PropsType> = (props) => {
             <div>
                 { editMode === false
                     ?   <div>
-                            <span style={{fontStyle: "italic" }}
+                            <span className={'status__look'}
                                   onDoubleClick={() =>{setEditMode(true)} } > {props.status || "no status yet"}
                             </span>
                         </div>
