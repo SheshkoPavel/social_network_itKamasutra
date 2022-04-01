@@ -1,17 +1,17 @@
 import React from 'react';
-import classes from "./Navbar.module.css";
+import "./Navbar.scss";
 import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className={classes.grid__nav}>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/profile/22856">Profile</NavLink>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/dialogs">Messages</NavLink>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/news">News</NavLink>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/music">Music</NavLink>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/settings">Settings</NavLink>
+        <nav className={'grid__nav'}>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/profile/22856">Profile</NavLink>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/dialogs">Messages</NavLink>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/news">News</NavLink>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/music">Music</NavLink>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/settings">Settings</NavLink>
             <br/>
-            <NavLink className={({isActive}) => classes.item + ` ${isActive ? classes.active : ''}`} to="/users">Find Users</NavLink>
+            <NavLink className={({isActive}) => 'item' + ` ${isActive ? 'item_active' : null}`} to="/users">Find Users</NavLink>
         </nav>
     );
 };

@@ -6,16 +6,19 @@
     align-items: center;
     background-color: #f1bec9;
 
-}
-.item {
-    color: white;
-    padding: 5px 0 5px 0;
-    text-decoration: none;
+    .item {
+        color: white;
+        padding: 5px 0 5px 0;
+        text-decoration: none;
+    }
+
+    .item_active {
+        color: #c369ff;
+    }
 }
 
-.item.active {
-    color: #c369ff;
-}
+
+
 
 /*.active {*/
 /*    color: gold;*/
