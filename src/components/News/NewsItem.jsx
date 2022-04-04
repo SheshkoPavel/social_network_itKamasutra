@@ -7,7 +7,7 @@ const NewsItem = (props) => {
                 <span style={{fontWeight: "bold"}}>Новость</span> {props.id + '  '}
             </div>
 
-            <img style={{height: 200}} src={props.imageURL} alt="news image"/>
+            <img style={{height: 200}} src={props.imageURL} alt="news"/>
             <div >
                 {props.newsText}
             </div>

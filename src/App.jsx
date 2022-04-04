@@ -3,7 +3,6 @@ import React, {useEffect, Suspense} from "react";
 import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
-import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -37,7 +36,6 @@ function App(props) {
                     <Route path="/profile/:userId" element={<ProfileContainer  />}/>
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
                     <Route path="/news" element={<News/>}/>
-                    <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                     <Route path='/users' element={<UsersContainer /> }/>
                     <Route path='/login' element={<Login /> }/>

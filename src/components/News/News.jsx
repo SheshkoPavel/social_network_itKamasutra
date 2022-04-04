@@ -24,7 +24,9 @@ const News = (props) => {
                 {
                     newsElements
                 }
-
+            </div>
+            <div>
+                <button>Добавить новость</button>
             </div>
         </div>
     );
