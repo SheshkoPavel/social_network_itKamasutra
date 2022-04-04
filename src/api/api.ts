@@ -95,4 +95,10 @@ export const profileAPI = {
             }
         });
     }
-};
+}
+
+export const testAPI = {
+    getTestUsers () {
+        return axios.get('http://localhost:5000/api/users')
+    }
+}
