@@ -2,34 +2,41 @@ import * as React from 'react'
 // @ts-ignore
 import Paginator from "../Common/Paginator/Paginator.tsx";
 import User from "./User";
-import {UserType} from "../../types/types";
+import {useDispatch, useSelector} from "react-redux";
+// @ts-ignore
+import {getUsersThunkCreator, setCurrentPage} from "../../redux/usersReducer.ts";
+import {useEffect} from "react";
 
-type PropsType = {
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    onPageChanged: (pageNumber: number) => void
-    users: Array<UserType>
-    isFollowingInProgress: Array<number>
-    follow: (userId: number) => void
-    unFollow: (userId: number) => void
 
-}
+export const Users = (props) => {
 
-const Users: React.FC<PropsType> = (props) => {
+    const users = useSelector((state: any) => state.usersPage.users)
+    const totalUsersCount = useSelector((state: any) => state.usersPage.totalUsersCount)
+    const currentPage = useSelector((state: any) => state.usersPage.currentPage)
+    const pageSize = useSelector((state: any) => state.usersPage.pageSize)
+    const isFollowingInProgress = useSelector((state: any) => state.usersPage.isFollowingInProgress)
+
+    const dispatch = useDispatch()
+    useEffect(()=> dispatch(getUsersThunkCreator(currentPage, pageSize)), [])
+
+    const onPageChanged = async (pageNumber: number) =>  {
+        dispatch(setCurrentPage(pageNumber));
+        await dispatch(getUsersThunkCreator(currentPage, pageSize));
+    }
+
+
     return (
         <div>
-            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize}
-                       currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
+            <Paginator totalItemsCount={totalUsersCount} pageSize={pageSize}
+                       currentPage={currentPage} onPageChanged={onPageChanged}/>
             <div>
-                {props.users.map((el) => <User user={el} key={el.id}
-                                               isFollowingInProgress={props.isFollowingInProgress}
-                                               follow={props.follow} unFollow={props.unFollow}/>
+                {users.map((el) => <User user={el}
+                                         key={el.id}
+                                         isFollowingInProgress={isFollowingInProgress}
+                                    />
                 )
                 }
             </div>
         </div>
     );
 };
-
-export default Users;

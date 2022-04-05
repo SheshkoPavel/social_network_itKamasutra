@@ -2,8 +2,21 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import classes from "./Users.module.css";
 import userAvatar from "../../assets/images/cat_ava.jpg";
+import {useDispatch} from "react-redux";
+import {followUser, unfollowUser} from "../../redux/usersReducer.ts";
 
 const User = (props) => {
+
+    const dispatch = useDispatch()
+
+    const follow = (userId) =>{
+        dispatch(followUser(userId));
+    }
+
+    const unFollow = (userId) =>{
+        dispatch(unfollowUser(userId));
+    }
+
     return (
         <div style={{marginBottom: 20}}>
             <div>
@@ -24,7 +37,7 @@ const User = (props) => {
                             {props.user.followed
                                 ? <button disabled={props.isFollowingInProgress.some(id => id === props.user.id)}
                                           onClick={() => {
-                                              props.unFollow(props.user.id)
+                                              unFollow(props.user.id)
                                           }
                                           }>
                                     Unfollow</button>
@@ -32,7 +45,7 @@ const User = (props) => {
                                 :
                                 <button disabled={props.isFollowingInProgress.some(id => id === props.user.id)}
                                     onClick={() => {
-                                     props.follow(props.user.id)
+                                     follow(props.user.id)
                                 }
                                 }> Follow </button>
                             }

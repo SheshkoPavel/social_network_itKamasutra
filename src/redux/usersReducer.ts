@@ -152,7 +152,8 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number):
     }
 }
 
-export const follow = (userId: number): ThunkAction<void, AppStateType, any, ActionsTypes> => {
+export const follow = (userId: number):
+    ThunkAction<Promise<void>, AppStateType, any, ActionsTypes> => {
     return async (dispatch) => {
         dispatch(toggleIsFollowingInProgress(true, userId));
         let data = await usersAPI.followUser(userId)

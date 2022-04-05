@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import UsersContainer from "./components/Users/UsersContainer.tsx";
+import UsersContainer, {UserPage} from "./components/Users/UsersContainer.tsx";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
@@ -37,7 +37,7 @@ function App(props) {
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
-                    <Route path='/users' element={<UsersContainer /> }/>
+                    <Route path='/users' element={<UserPage /> }/>
                     <Route path='/login' element={<Login /> }/>
                 </Routes>
                 </Suspense>
