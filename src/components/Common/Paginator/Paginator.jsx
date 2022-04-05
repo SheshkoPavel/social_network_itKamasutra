@@ -1,8 +1,20 @@
 import React, {useState} from 'react';
 import classes from "./Paginator.module.css";
+import {useDispatch} from "react-redux";
+import {getUsersThunkCreator, setCurrentPage} from "../../../redux/usersReducer";
 
 const Paginator = (props) => {
-    const portionSize = 15;
+
+    const portionSize = 15;   //По сколько Пользователей выводим на страницу
+
+    const dispatch = useDispatch()
+
+    const onPageChanged = (pageNumber) => {
+       dispatch(setCurrentPage(pageNumber));
+       dispatch(getUsersThunkCreator(pageNumber, props.pageSize));
+    }
+
+
 
     let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize);
 
@@ -27,7 +39,7 @@ const Paginator = (props) => {
                     .map((p) => {
                         return <span className={props.currentPage === p ? classes.selectedPage : classes.page }
                                     key={p}
-                                    onClick={(e)=> {props.onPageChanged(p);
+                                    onClick={(e)=> {onPageChanged(p);
                                     }}>{p}</span>
             })}
             { portionCount > portionNumber &&
