@@ -8,9 +8,9 @@
     grid-template-rows: 100px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
-}
 
-.grid_container_content {
-    grid-area: content;
-    background-color: #b0aff1;
+    .content {
+        grid-area: content;
+        background-color: #b0aff1;
+    }
 }

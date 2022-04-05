@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React, {useEffect, Suspense} from "react";
 import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
@@ -28,7 +28,7 @@ function App(props) {
         <div className='grid_container'>
             <HeaderContainer />
             <Navbar/>
-            <div className='grid_container_content'>
+            <div className='content'>
                 <Suspense fallback={<Preloader/>}>
                 <Routes>
                     <Route path="/" element={<ProfileContainer  />}/>
