@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import UsersContainer from "./components/Users/UsersPage";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";

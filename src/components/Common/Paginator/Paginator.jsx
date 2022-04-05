@@ -15,7 +15,6 @@ const Paginator = (props) => {
     }
 
 
-
     let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize);
 
     let pages = [];
