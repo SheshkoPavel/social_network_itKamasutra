@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from './ProfileInfo.module.css';
+import './ProfileInfo.scss';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
 import ProfileStatus from "./ProfileStatus";
@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
     }
 
     return (
-        <div>
+        <div className={'profile_content'}>
 
             <div >
                 <img
@@ -35,10 +35,10 @@ const ProfileInfo = (props) => {
 
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 
-                <div className={classes.descriptionBlock}>
-                    Name: {props.profile.fullName} <br/>
-                    About: {props.profile.aboutMe} <br/>
-                    Contacts:
+                <div className={'descriptionBlock'}>
+                    <div className={'bold'}>Name: </div> {props.profile.fullName} <br/>
+                    <div className={'bold'}>About: </div> {props.profile.aboutMe ? props.profile.aboutMe : 'Cool person'} <br/>
+                    {/* Contacts:
 
                     facebook: {props.profile.contacts.facebook} <br/>
                     website: {props.profile.contacts.website} <br/>
@@ -47,10 +47,10 @@ const ProfileInfo = (props) => {
                     instagram: {props.profile.contacts.instagram} <br/>
                     youtube: {props.profile.contacts.youtube} <br/>
                     github: {props.profile.contacts.github} <br/>
-                    mainLink: {props.profile.contacts.mainLink} <br/><br/>
-                    Looking for a job: {props.profile.lookingForAJob === true
-                        ? props.profile.lookingForAJobDescription
-                        : "Yes, i want work in IntexSoft"} <br/>
+                    mainLink: {props.profile.contacts.mainLink} <br/><br/>*/}
+                    <div className={'underline'}>Looking for a job:</div> {props.profile.lookingForAJob === true
+                    ? props.profile.lookingForAJobDescription
+                    : "Yes, i want work in IntexSoft"} <br/>
                     <br/>
 
 

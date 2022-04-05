@@ -1,0 +1,19 @@
+.profile_content {
+    padding: 5px;
+
+    .descriptionBlock {
+        padding: 10px;
+
+        .bold {
+            display: inline-block;
+            margin: 0 3px 0 0;
+            font-weight: bold;
+        }
+
+        .underline {
+            display: inline-block;
+            margin: 0 3px 0 0;
+            text-decoration: underline;
+        }
+    }
+}

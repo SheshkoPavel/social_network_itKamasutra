@@ -6,15 +6,15 @@
     align-items: center;
     background-color: #f1bec9;
 
-}
-.item {
-    color: white;
-    padding: 5px 0 5px 0;
-    text-decoration: none;
-}
+    .item {
+        color: white;
+        padding: 5px 0 5px 0;
+        text-decoration: none;
+    }
 
-.item.active {
-    color: #c369ff;
+    .item_active {
+        color: #c369ff;
+    }
 }
 
 /*.active {*/

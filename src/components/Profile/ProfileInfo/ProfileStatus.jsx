@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import './ProfileStatus.scss'
 
 const ProfileStatus = (props) => {
 
@@ -22,7 +23,7 @@ const ProfileStatus = (props) => {
             <div>
                 { editMode === false
                     ?   <div>
-                            <span style={{fontStyle: "italic" }} onDoubleClick={() =>{setEditMode(true)} } > {props.status || "no status yet"}</span>
+                            <span className={'status__look'} onDoubleClick={() =>{setEditMode(true)} } > {props.status || "no status yet"}</span>
                         </div>
 
                     :   <div>
