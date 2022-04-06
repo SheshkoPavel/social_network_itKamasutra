@@ -4,12 +4,12 @@ import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {getAuthUserData} from "./redux/authReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import UsersPage from "./components/Users/UsersPage";
+import HeaderComponent from "./components/Header/Header.component";
 /*import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";*/
 
@@ -26,7 +26,7 @@ function App(props) {
 
     return (
         <div className='grid_container'>
-            <HeaderContainer />
+            <HeaderComponent />
             <Navbar/>
             <div className='content'>
                 <Suspense fallback={<Preloader/>}>

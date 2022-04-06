@@ -1,8 +1,21 @@
 import React from 'react';
 import "./Header.component.scss";
 import {Link, NavLink} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../redux/authReducer";
+import Button from '@mui/material/Button';
+
 
 const HeaderComponent = (props) => {
+
+    const isAuth = useSelector(state => state.auth.isAuth)
+    const login = useSelector(state => state.auth.login)
+
+    const dispatch = useDispatch()
+    const logoutFunction = () => {
+        dispatch(logout());
+    }
+
     return (
         <header className={'grid_header'}>
             <Link to="/">
@@ -11,10 +24,10 @@ const HeaderComponent = (props) => {
                      alt="Logotype"/>
             </Link>
             <div className={'loginBlock'}>
-                {props.isAuth
+                {isAuth
                     ? <div className={'block_text'}>
-                        <div className={'bold'}>{props.login} </div>
-                        <button onClick={props.logout}>Logout</button>
+                        <div className={'bold'}>{login} </div>
+                        <Button variant="text" size='small' color="success"  onClick={logoutFunction}>Logout</Button>
                     </div>
                     : <NavLink to={'/login'}>Login</NavLink>
                 }

@@ -12,7 +12,7 @@ const Login = (props) => {
 
     const dispatch = useDispatch()
     const loginFunction = (email, password, rememberMe, captcha) => {
-        dispatch(login(email, password, rememberMe, captcha))
+        dispatch(login(email, password, rememberMe, captcha));
     }
 
     if (!isAuth) {
