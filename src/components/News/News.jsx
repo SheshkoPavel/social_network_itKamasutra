@@ -35,7 +35,7 @@ const News = (props) => {
                     newsElements
                 }
             </div>
-            <div>
+            <div style={{textAlign: "center"}}>
                 <AddNewsForm />
             </div>
         </div>

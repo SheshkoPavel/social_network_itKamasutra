@@ -15,10 +15,10 @@ const AddNewsForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <textarea placeholder="Write text fo News" {...register("newsText", {required: true})} />
+            <textarea style={{width: 300, height: 50}} placeholder="Write text for new News" {...register("newsText", {required: true})} />
             <div style={{color: "rebeccapurple"}}>{errors.newsText?.type === 'required' && "You must write something"}</div>
 
-            <input placeholder='Insert URL' {...register('imageURL', {required: true})}  />
+            <input style={{width: 300}} placeholder='Insert URL' {...register('imageURL', {required: true})}  />
             <div style={{color: "rebeccapurple"}}>{errors.imageURL?.type === 'required' && "You must write something"}</div>
 
             <input type="submit" />
