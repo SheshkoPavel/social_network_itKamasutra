@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import NewsItem from "./NewsItem";
 import {useDispatch, useSelector} from "react-redux";
 import {getNewsThunk} from "../../redux/newsReducer";
+import AddNewsForm from "./AddNewsForm";
 
 
 
@@ -35,7 +36,7 @@ const News = (props) => {
                 }
             </div>
             <div>
-                <button>Добавить новость</button>
+                <AddNewsForm />
             </div>
         </div>
     );

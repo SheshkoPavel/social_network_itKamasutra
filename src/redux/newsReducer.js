@@ -1,6 +1,7 @@
 import {newsAPI} from "../api/api";
 
-const SET_NEWS = 'SET_NEWS'
+const news_SET_NEWS = 'SET_NEWS'
+const news_ADD_NEW_NEWS = 'news_ADD_NEW_NEWS'
 
 const initialState = {
     news: [
@@ -11,10 +12,18 @@ const initialState = {
 export const newsReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case SET_NEWS: {
+        case news_SET_NEWS: {
             return {
                 ...state,
                 news: action.news
+            }
+        }
+        case news_ADD_NEW_NEWS: {
+            return {
+                ...state,
+                news: [...state.news,
+                    {id: action.newNews.id, newsText: action.newNews.newsText, imageURL: action.newNews.imageURL}
+                ]
             }
         }
 
@@ -23,7 +32,8 @@ export const newsReducer = (state = initialState, action) => {
     }
 }
 
-export const setNewsAC = (news) => ({type: SET_NEWS, news})
+export const setNewsAC = (news) => ({type: news_SET_NEWS, news})
+export const addNewNewsAC = (newNews) => ({type: news_ADD_NEW_NEWS, newNews})
 
 export const getNewsThunk = () => async (dispatch) => {
     try {
@@ -32,4 +42,10 @@ export const getNewsThunk = () => async (dispatch) => {
     } catch (error) {
         console.log('Check server. ' + error);
     }
+}
+
+export const addNewNewsThunk = (newNews) => async (dispatch) => {
+    let response = await newsAPI.addNewNews(newNews);
+    dispatch(addNewNewsAC(response.data));
+
 }
