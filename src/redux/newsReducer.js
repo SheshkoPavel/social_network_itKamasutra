@@ -26,6 +26,10 @@ export const newsReducer = (state = initialState, action) => {
 export const setNewsAC = (news) => ({type: SET_NEWS, news})
 
 export const getNewsThunk = () => async (dispatch) => {
+    try {
     let response = await newsAPI.getNews();
     dispatch(setNewsAC(response.data));
+    } catch (error) {
+        console.log('Check server. ' + error);
+    }
 }
