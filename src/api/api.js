@@ -28,7 +28,7 @@ export const usersAPI = {
     getProfile (userId) {
         return profileAPI.getProfile(userId)
     }
-};
+}
 
 export const authAPI = {
     me() {
@@ -41,7 +41,7 @@ export const authAPI = {
     logout() {
         return instance.delete(`auth/login`);
     }
-};
+}
 
 export const securityAPI = {
     getCaptchaURL(){
@@ -68,4 +68,10 @@ export const profileAPI = {
             }
         });
     }
-};
+}
+
+export const newsAPI = {
+    getNews() {
+        return axios.get('http://localhost:5000/news', {withCredentials: true})
+    }
+}

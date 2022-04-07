@@ -4,6 +4,7 @@ import dialogsReducer from "./dialogsReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
+import {newsReducer} from "./newsReducer";
 
 
 /*To use saga, I should ->  npm install redux-saga
@@ -22,7 +23,8 @@ let reducers = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogsReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    newsPage: newsReducer
 });
 
 
