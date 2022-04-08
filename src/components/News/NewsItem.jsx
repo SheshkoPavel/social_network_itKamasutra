@@ -1,15 +1,21 @@
 import React from 'react';
+import './NewsItem.scss'
+import NewsDeleteButton from "./NewsDeleteButton";
+
 
 const NewsItem = (props) => {
+
     return (
-        <div style={{textAlign:"center", marginBottom: 25}}>
+        <div className='main_content'>
             <div>
-                <span style={{fontWeight: "bold"}}>Новость</span> {props.id + '  '}
+                <span className={'header'}>Новость</span> {props.id + '  '}
             </div>
 
-            <img style={{height: 200}} src={props.imageURL} alt="news"/>
-            <div >
+            <img className={'news_image'} src={props.imageURL} alt="news"/>
+            <div>
                 {props.newsText}
+                <NewsDeleteButton id={props.id} />
+
             </div>
         </div>
     );

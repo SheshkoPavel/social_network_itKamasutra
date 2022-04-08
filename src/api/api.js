@@ -76,5 +76,8 @@ export const newsAPI = {
     },
     addNewNews (newNews) {
         return axios.post('http://localhost:5000/news', {newsText: newNews.newsText, imageURL: newNews.imageURL})
+    },
+    deleteNewsPost (newsId) {
+        return axios.delete(`http://localhost:5000/news/${newsId}`, {withCredentials: true})
     }
 }

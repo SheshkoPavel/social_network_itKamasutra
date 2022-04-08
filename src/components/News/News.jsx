@@ -10,6 +10,7 @@ const News = (props) => {
 
     const dispatch = useDispatch()
 
+
     useEffect(() => {
         dispatch(getNewsThunk())
     }, [])

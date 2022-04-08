@@ -47,5 +47,14 @@ export const getNewsThunk = () => async (dispatch) => {
 export const addNewNewsThunk = (newNews) => async (dispatch) => {
     let response = await newsAPI.addNewNews(newNews);
     dispatch(addNewNewsAC(response.data));
+}
 
+export const deleteNewsPostThunk = (NewsId) => async (dispatch) => {
+    try {
+        await newsAPI.deleteNewsPost(NewsId);
+        let response = await newsAPI.getNews();
+        dispatch(setNewsAC(response.data));
+    } catch (error) {
+        console.log('Check server. ' + error);
+    }
 }
