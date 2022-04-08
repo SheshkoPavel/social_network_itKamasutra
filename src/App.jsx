@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Login from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {getAuthUserData} from "./redux/authReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import UsersPage from "./components/Users/UsersPage";
@@ -17,12 +17,12 @@ import ProfileContainer from "./components/Profile/ProfileContainer";*/
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
-
 //My UserID is 22856
 
-function App(props) {
+function App() {
 
-    useEffect(() => {props.getAuthUserData()}, []);
+    const dispatch = useDispatch()
+    useEffect(() => {dispatch(getAuthUserData())}, []);
 
     return (
         <div className='grid_container'>
@@ -47,4 +47,4 @@ function App(props) {
     );
 }
 
-export default connect(null, {getAuthUserData})(App);
+export default App;
