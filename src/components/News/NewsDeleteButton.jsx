@@ -13,7 +13,7 @@ const NewsDeleteButton = (props) => {
         palette: {
             deletePost: {
                 main: '#72648b',
-                contrastText: '#fff',
+                contrastText: '#fff'
             },
         },
     });
@@ -24,10 +24,8 @@ const NewsDeleteButton = (props) => {
                 <Button startIcon={<DeleteIcon />}
                         size={"small"}
                         color={"deletePost"}
-                        onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}
-
-                >
-                    delete {props.id}
+                        onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}  >
+                    delete
                 </Button>
             </ThemeProvider>
         </div>
