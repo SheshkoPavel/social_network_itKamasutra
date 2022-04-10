@@ -24,31 +24,38 @@ const NewsButtonGroup = (props) => {
     return (
         <div>
             <ThemeProvider theme={theme}>
-                <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
-                    <Button startIcon={<EditIcon />}
-                            color={"myColorGroup"}
-                            onClick={()=> {props.setEditMode(true)}}
-                    >
-                        edit
-                    </Button>
-                    <Button startIcon={<DeleteIcon />}
-                            color={"myColorGroup"}
-                            onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}  >
-                        delete
-                    </Button>
-                    {props.editMode === true ? <Button onClick={() => {
-
+                { props.editMode === false
+                    ?   <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
+                        <Button startIcon={<EditIcon />}
+                                color={"myColorGroup"}
+                                onClick={()=> {props.setEditMode(true)}}
+                        >
+                            edit
+                        </Button>
+                        <Button startIcon={<DeleteIcon />}
+                                color={"myColorGroup"}
+                                onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}  >
+                            delete
+                        </Button>
+                        </ButtonGroup>
+                    : <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
+                        <Button startIcon={<EditIcon />}
+                                color={"myColorGroup"}
+                                onClick={()=> {props.setEditMode(false)}}
+                        >
+                            undo edit
+                        </Button>
+                        <Button onClick={() => {
                             dispatch(updateNewsPostTextThunk({updateId: props.id, newNewsText: props.editText}))
                             props.setEditMode(false);
-                        }}
-                                                 startIcon={<SendIcon />}
-                                                 color={"myColorGroup"}
-
+                            }}
+                                startIcon={<SendIcon />}
+                                color={"myColorGroup"}
                         >
                             ok
                         </Button>
-                        : null}
-                </ButtonGroup>
+                    </ButtonGroup>
+                }
             </ThemeProvider>
         </div>
     );
