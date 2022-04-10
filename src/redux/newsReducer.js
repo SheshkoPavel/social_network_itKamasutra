@@ -2,6 +2,7 @@ import {newsAPI} from "../api/api";
 
 const news_SET_NEWS = 'SET_NEWS'
 const news_ADD_NEW_NEWS = 'news_ADD_NEW_NEWS'
+const news_DELETE_NEWS_POST = 'news_DELETE_NEWS_POST'
 
 const initialState = {
     news: [
@@ -26,6 +27,12 @@ export const newsReducer = (state = initialState, action) => {
                 ]
             }
         }
+        case news_DELETE_NEWS_POST: {
+            return {
+                ...state,
+                news: state.news.filter(n => n.id !== action.NewsId)
+            }
+        }
 
         default :
             return state;
@@ -34,6 +41,7 @@ export const newsReducer = (state = initialState, action) => {
 
 export const setNewsAC = (news) => ({type: news_SET_NEWS, news})
 export const addNewNewsAC = (newNews) => ({type: news_ADD_NEW_NEWS, newNews})
+export const deleteNewsPostAC = (NewsId) => ({type: news_DELETE_NEWS_POST, NewsId})
 
 export const getNewsThunk = () => async (dispatch) => {
     try {
@@ -52,8 +60,7 @@ export const addNewNewsThunk = (newNews) => async (dispatch) => {
 export const deleteNewsPostThunk = (NewsId) => async (dispatch) => {
     try {
         await newsAPI.deleteNewsPost(NewsId);
-        let response = await newsAPI.getNews();
-        dispatch(setNewsAC(response.data));
+        dispatch(deleteNewsPostAC(NewsId))
     } catch (error) {
         console.log('Check server. ' + error);
     }
