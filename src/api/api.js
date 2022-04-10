@@ -79,5 +79,9 @@ export const newsAPI = {
     },
     deleteNewsPost (newsId) {
         return axios.delete(`http://localhost:5000/news/${newsId}`, {withCredentials: true})
+    },
+    updateNewsPost (updateNews) {
+        return axios.patch('http://localhost:5000/news',
+            {updateId: updateNews.updateId, newNewsText: updateNews.newNewsText}, {withCredentials: true})
     }
 }

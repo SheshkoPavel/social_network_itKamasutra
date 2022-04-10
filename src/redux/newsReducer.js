@@ -58,3 +58,9 @@ export const deleteNewsPostThunk = (NewsId) => async (dispatch) => {
         console.log('Check server. ' + error);
     }
 }
+
+export const updateNewsPostTextThunk = (updateIdAndMessage) => async (dispatch) => {
+    await newsAPI.updateNewsPost(updateIdAndMessage);
+    let response = await newsAPI.getNews();
+    dispatch(setNewsAC(response.data));
+}
