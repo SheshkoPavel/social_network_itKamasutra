@@ -8,6 +8,8 @@ const NewsItem = (props) => {
     const [editMode, setEditMode] = useState(false)
     const [editText, setEditText] = useState(props.newsText);
 
+    const startState = props.newsText;
+
     useEffect(() => {
         setEditText(props.newsText)
     }, [props.newsText]);
@@ -41,6 +43,7 @@ const NewsItem = (props) => {
                                  editText={editText}
                                  setEditText={setEditText}
                                  id={props.id}
+                                 startState={startState}
                 />
 
             </div>

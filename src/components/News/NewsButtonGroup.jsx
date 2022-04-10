@@ -41,7 +41,10 @@ const NewsButtonGroup = (props) => {
                     : <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
                         <Button startIcon={<EditIcon />}
                                 color={"myColorGroup"}
-                                onClick={()=> {props.setEditMode(false)}}
+                                onClick={()=> {
+                                    props.setEditMode(false);
+                                    props.setEditText(props.startState);
+                                }}
                         >
                             undo edit
                         </Button>
