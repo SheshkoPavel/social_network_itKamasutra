@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './NewsItem.scss'
 import NewsButtonGroup from "./NewsButtonGroup";
+import TextField from '@mui/material/TextField';
 
 const NewsItem = (props) => {
 
@@ -24,7 +25,15 @@ const NewsItem = (props) => {
             <img className={'news_image'} src={props.imageURL} alt="news"/>
             <div>
                 {editMode === false ? props.newsText
-                                    : <input type={"text"} value={editText} onChange={onNewsTextChange} />
+                                    : <TextField onChange={onNewsTextChange}
+                                                 size={"small"}
+                                                 helperText="Please enter new text"
+                                                 multiline
+                                                 rows={3}
+                                                 type={"text"}
+                                                 value={editText}
+                                                 style={{marginTop: 5, width: 600}}
+                                                  />
 
                 }
                 <NewsButtonGroup editMode={editMode}
