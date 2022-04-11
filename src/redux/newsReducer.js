@@ -3,6 +3,7 @@ import {newsAPI} from "../api/api";
 const news_SET_NEWS = 'SET_NEWS'
 const news_ADD_NEW_NEWS = 'news_ADD_NEW_NEWS'
 const news_DELETE_NEWS_POST = 'news_DELETE_NEWS_POST'
+const news_UPDATE_NEWS_POST = 'news_UPDATE_NEWS_POST'
 
 const initialState = {
     news: [
@@ -33,6 +34,18 @@ export const newsReducer = (state = initialState, action) => {
                 news: state.news.filter(n => n.id !== action.NewsId)
             }
         }
+        case news_UPDATE_NEWS_POST: {
+            return  {
+                ...state,
+                news: state.news.filter(n => {
+                    if (n.id === action.updateIdAndMessage.updateId) {
+                        n.newsText = action.updateIdAndMessage.newNewsText
+                        return n
+                    }
+                    return  n
+                })
+            }
+        }
 
         default :
             return state;
@@ -41,6 +54,7 @@ export const newsReducer = (state = initialState, action) => {
 
 export const setNewsAC = (news) => ({type: news_SET_NEWS, news})
 export const addNewNewsAC = (newNews) => ({type: news_ADD_NEW_NEWS, newNews})
+export const updateNewsPostAC = (updateIdAndMessage) => ({type: news_UPDATE_NEWS_POST, updateIdAndMessage})
 export const deleteNewsPostAC = (NewsId) => ({type: news_DELETE_NEWS_POST, NewsId})
 
 export const getNewsThunk = () => async (dispatch) => {
@@ -67,7 +81,13 @@ export const deleteNewsPostThunk = (NewsId) => async (dispatch) => {
 }
 
 export const updateNewsPostTextThunk = (updateIdAndMessage) => async (dispatch) => {
+    try {
+    dispatch(updateNewsPostAC(updateIdAndMessage));
     await newsAPI.updateNewsPost(updateIdAndMessage);
+    } catch (error) {
+        console.log('Check server. ' + error);
+    }
+/*    dispatch(updateNewsPostAC(updateIdAndMessage));
     let response = await newsAPI.getNews();
-    dispatch(setNewsAC(response.data));
+    dispatch(setNewsAC(response.data));*/
 }

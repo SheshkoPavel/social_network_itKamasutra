@@ -3,9 +3,8 @@ import React, {useEffect, Suspense} from "react";
 import Navbar from "./components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom'
 import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
 import Login from "./components/Login/Login";
-import {connect, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./redux/authReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import UsersPage from "./components/Users/UsersPage";
@@ -36,7 +35,6 @@ function App() {
                     <Route path="/profile/:userId" element={<ProfileContainer  />}/>
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
                     <Route path="/news" element={<News/>}/>
-                    <Route path='/settings' element={<Settings/>}/>
                     <Route path='/users' element={<UsersPage /> }/>
                     <Route path='/login' element={<Login /> }/>
                 </Routes>
