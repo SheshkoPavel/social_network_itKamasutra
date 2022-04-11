@@ -5,7 +5,7 @@ import {getUsersThunkCreator, setCurrentPage} from "../../../redux/usersReducer"
 
 const Paginator = (props) => {
 
-    const portionSize = 15;   //По сколько Пользователей выводим на страницу
+    const portionSize = 15;   //Сколько страниц переключения отображаем на странице
 
     const dispatch = useDispatch()
 
