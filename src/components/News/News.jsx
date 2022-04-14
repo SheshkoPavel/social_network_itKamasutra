@@ -27,7 +27,9 @@ const News = (props) => {
 
     useEffect(() => {getNews()},[])*/
 
-    let newsElements = news.map(n => <NewsItem key={n.id} id={n.id} newsText={n.newsText} imageURL={n.imageURL}/>)
+    let newsElements = news.map((n, index) => <NewsItem key={n.id} id={n.id}
+                                                        newsText={n.newsText} imageURL={n.imageURL}
+                                                        index={index + 1}    />)
 
     return (
         <div>

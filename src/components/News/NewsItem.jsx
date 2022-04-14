@@ -20,13 +20,13 @@ const NewsItem = (props) => {
 
     return (
         <div className='main_content'>
-            <div>
-                <span className={'header'}>Новость</span> {props.id + '  '}
+            <div className={'header'}>
+                <span className={'header__text'}>Новость</span> {props.index + '  '}
             </div>
 
             <img className={'news_image'} src={props.imageURL} alt="news"/>
             <div>
-                {editMode === false ? props.newsText
+                {editMode === false ? <div> {props.newsText} </div>
                                     : <TextField onChange={onNewsTextChange}
                                                  size={"small"}
                                                  helperText="Please enter new text"
@@ -38,13 +38,15 @@ const NewsItem = (props) => {
                                                   />
 
                 }
-                <NewsButtonGroup editMode={editMode}
-                                 setEditMode={setEditMode}
-                                 editText={editText}
-                                 setEditText={setEditText}
-                                 id={props.id}
-                                 startState={startState}
-                />
+                <div className={'buttons__group'}>
+                    <NewsButtonGroup editMode={editMode}
+                                     setEditMode={setEditMode}
+                                     editText={editText}
+                                     setEditText={setEditText}
+                                     id={props.id}
+                                     startState={startState}
+                    />
+                </div>
 
             </div>
         </div>

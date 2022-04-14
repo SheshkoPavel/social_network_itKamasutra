@@ -1,9 +1,15 @@
 .main_content {
-  text-align: center ;
-  margin-bottom: 25px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  width: 100%;
 
   .header {
-    font-weight: bold;
+    margin-bottom: 3px;
+
+    .header__text {
+      font-weight: bold;
+    }
   }
 
   .news_image {
@@ -11,4 +17,7 @@
     border-radius: 30px;
   }
 
+  .buttons__group {
+    margin: 5px;
+  }
 }
