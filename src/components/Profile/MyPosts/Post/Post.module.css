@@ -7,3 +7,7 @@
     height: 80px;
     border-radius: 80px;
 }
+
+.like__buttons {
+    margin-left: 5px;
+}

@@ -10,7 +10,7 @@ const MyPosts = (props) => {
 
     return (
         <div className={classes.postsBlock}>
-            <h3>Posts</h3>
+            <h3 className={classes.posts}>Posts</h3>
             <div>
                 <AddPostForm addPost={props.addPost} />
 
