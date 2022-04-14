@@ -66,6 +66,15 @@ export const getNewsThunk = () => async (dispatch) => {
     }
 }
 
+export const getNewsDESCThunk = () => async (dispatch) => {
+    try {
+        let response = await newsAPI.getNewsDESC();
+        dispatch(setNewsAC(response.data));
+    } catch (error) {
+        console.log('Check server. ' + error);
+    }
+}
+
 export const addNewNewsThunk = (newNews) => async (dispatch) => {
     let response = await newsAPI.addNewNews(newNews);
     dispatch(addNewNewsAC(response.data));

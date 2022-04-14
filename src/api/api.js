@@ -74,6 +74,9 @@ export const newsAPI = {
     getNews() {
         return axios.get('http://localhost:5000/news', {withCredentials: true})
     },
+    getNewsDESC() {
+        return axios.get('http://localhost:5000/news/desc', {withCredentials: true})
+    },
     addNewNews (newNews) {
         return axios.post('http://localhost:5000/news', {newsText: newNews.newsText, imageURL: newNews.imageURL})
     },

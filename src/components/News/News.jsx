@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import NewsItem from "./NewsItem";
 import {useDispatch, useSelector} from "react-redux";
-import {getNewsThunk} from "../../redux/newsReducer";
+import {getNewsDESCThunk, getNewsThunk} from "../../redux/newsReducer";
 import AddNewsForm from "./AddNewsForm";
-
-
+import Button from "@mui/material/Button";
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 const News = (props) => {
 
@@ -16,6 +16,16 @@ const News = (props) => {
     }, [])
 
     const news = useSelector(state => state.newsPage.news)
+
+    const [state, setState] = useState(false)
+    const onDescClick = () => {
+        dispatch(getNewsDESCThunk());
+        setState(true);
+    }
+    const onAscClick = () => {
+        dispatch(getNewsThunk());
+        setState(false);
+    }
 
 /*    Local server request for take news
     const [news, setNews] = useState([{id: 0, newsText: 'Здесь может быть ваша реклама', imageURL: 'https://r7.pngegg.com/path/452/495/745/react-javascript-angularjs-ionic-github-e09b123ee65b250eca5b7fdc0c317bf4.png'}])
@@ -33,6 +43,21 @@ const News = (props) => {
 
     return (
         <div>
+            { state === false
+                ? <div className={'news__btns__right'}> <Button startIcon={<ImportExportIcon />}
+                                                              onClick={onDescClick}
+                                                              color="secondary" >
+                                                     DESC
+                    </Button>
+                </div>
+                : <div className={'news__btns__right'}> <Button startIcon={<ImportExportIcon />}
+                                                                onClick={onAscClick}
+                                                                color="secondary" >
+                                        ASC
+                     </Button>
+                </div>
+            }
+
             <div>
                 {
                     newsElements
