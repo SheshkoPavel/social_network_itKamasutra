@@ -25,7 +25,7 @@ const ProfileInfo = (props) => {
                 <img
                     src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
                     alt={`user avatar ${props.profile.userId}`}
-                    style={{borderRadius: 80, width: 150}}
+                    className={'avatar__large'}
                     onDoubleClick={() =>{setEditMode(true)} }
                 />
                 { editMode === true && props.profile.userId === 22856
@@ -38,21 +38,11 @@ const ProfileInfo = (props) => {
                 <div className={'descriptionBlock'}>
                     <div className={'bold'}>Name: </div> {props.profile.fullName} <br/>
                     <div className={'bold'}>About: </div> {props.profile.aboutMe ? props.profile.aboutMe : 'Cool person'} <br/>
-                    {/* Contacts:
 
-                    facebook: {props.profile.contacts.facebook} <br/>
-                    website: {props.profile.contacts.website} <br/>
-                    VK: {props.profile.contacts.vk} <br/>
-                    twitter: {props.profile.contacts.twitter} <br/>
-                    instagram: {props.profile.contacts.instagram} <br/>
-                    youtube: {props.profile.contacts.youtube} <br/>
-                    github: {props.profile.contacts.github} <br/>
-                    mainLink: {props.profile.contacts.mainLink} <br/><br/>*/}
                     <div className={'underline'}>Looking for a job:</div> {props.profile.lookingForAJob === true
                     ? props.profile.lookingForAJobDescription
                     : "Yes, i want work in IntexSoft"} <br/>
                     <br/>
-
 
                 </div>
             </div>

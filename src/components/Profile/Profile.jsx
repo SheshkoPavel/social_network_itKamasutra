@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
 
@@ -11,7 +11,7 @@ const Profile = (props) => {
                          updateStatus={props.updateStatus}
                          savePhoto={props.savePhoto}
             />
-            <MyPostsContainer  />
+            <MyPosts />
         </div>
     );
 };

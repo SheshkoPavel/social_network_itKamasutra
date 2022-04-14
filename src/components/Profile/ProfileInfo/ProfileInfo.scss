@@ -1,6 +1,11 @@
 .profile_content {
     padding: 5px;
 
+    .avatar__large {
+        width: 150px;
+        border-radius: 80px;
+    }
+
     .descriptionBlock {
         padding: 10px;
 

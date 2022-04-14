@@ -3,7 +3,6 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, savePhoto, updateStatus} from "../../redux/profileReducer";
 import {useMatch} from "react-router-dom";
-import {compose} from "redux";
 
 const ProfileURLMatch = (props) => {
     const match = useMatch('/profile/:userId/');
@@ -13,7 +12,9 @@ const ProfileURLMatch = (props) => {
 const ProfileContainer = (props) => {
 
     useEffect(() => {
-        let userId = props.match ? props.match.params.userId : 22856;
+        let userId = props.match
+            ? props.match.params.userId
+            : 22856;
         props.getUserProfile(userId);
         props.getStatus(userId);
     }, [props.match]);
@@ -33,7 +34,4 @@ const mapStateToProps = (state) => ({
     status: state.profilePage.status
 });
 
-export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto}),
-)(ProfileURLMatch)
-
+export default connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto})(ProfileURLMatch)
