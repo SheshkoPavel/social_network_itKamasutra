@@ -11,6 +11,7 @@
 
 .paginator {
     margin: 10px 0 20px 5px;
+    text-align: center;
 }
 
 .pageNumber {
@@ -23,4 +24,9 @@
     margin: 2px;
     border: solid 3px #eef19e;
     font-weight: bold;
+}
+
+.users__on__page {
+    text-align: right;
+    margin-right: 5px;
 }

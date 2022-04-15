@@ -2,19 +2,32 @@ import React, {useState} from 'react';
 import classes from "./Paginator.module.css";
 import {useDispatch} from "react-redux";
 import {getUsersThunkCreator, setCurrentPage} from "../../../redux/usersReducer";
+import Button from "@mui/material/Button";
 
 const Paginator = (props) => {
 
+    const dispatch = useDispatch()
     const portionSize = 15;   //Сколько страниц переключения отображаем на странице
 
-    const dispatch = useDispatch()
+    //Функция вызывается с параметром при отрисовке юзеров
     const onPageChanged = (pageNumber) => {
-       dispatch(setCurrentPage(pageNumber));
-       dispatch(getUsersThunkCreator(pageNumber, props.pageSize));
+        dispatch(setCurrentPage(pageNumber));
+        dispatch(getUsersThunkCreator(pageNumber, pageSize));
+    }
+
+    // Сетаем количество юзеров на странице
+    const [pageSize, setPageSize] = useState(props.pageSize)
+    const onSizeChange = (e) =>{
+        setPageSize(e.currentTarget.value)
+    }
+    //Изменяем количество пользователей на странице
+    const onPageSizeChanged = () => {
+        dispatch(setCurrentPage(1));
+        dispatch(getUsersThunkCreator(1, pageSize));
     }
 
     //Узнаём количество страниц. Делим количество всех элементов на количество элементов на странице, округляем вверх
-    let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize);
+    let pagesCount = Math.ceil(props.totalItemsCount / pageSize);
 
     //Создаём и заполняем массив, равный количеству страниц
     let pages = [];
@@ -34,26 +47,40 @@ const Paginator = (props) => {
         <div className={classes.paginator}>
             { //Показываем кнопку "previous", исли номер порции больше 1
                 portionNumber > 1 &&
-              <button className={classes.spanButton} onClick={()=> {setPortionNumber(portionNumber - 1)} }>
+              <Button variant={"outlined"} size={"small"} onClick={()=> {setPortionNumber(portionNumber - 1)} }>
                   previous
-              </button>
+              </Button>
             }
 
             { //Выводим текущую порцию страниц (1-15, 15-30), в зависимости от размера порции
                 pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map((p) => {
-                        return <span className={props.currentPage === p ? classes.selectedPage : classes.page }
-                                    key={p}
-                                    onClick={()=> {onPageChanged(p)}}>
-                                {p}
-                                </span>
+                        return <Button variant={'text'}
+                                       size={"small"}
+                                       sx={{minWidth: 25}}
+                                       color={props.currentPage === p ? "secondary" : "primary"}
+                                       key={p}
+                                       onClick={()=> {onPageChanged(p)}}>
+                                    {p}
+                                </Button>
             })}
-            { //Если колицество порций для вывода больше текущего номера порции, то показываем кнопку
+            { //Если количество порций для вывода больше текущего номера порции, то показываем кнопку
                 portionCount > portionNumber &&
-                <button className={classes.spanButton} onClick={()=> {setPortionNumber(portionNumber + 1)} } >
+                <Button variant={"outlined"} size={"small"} onClick={()=> {setPortionNumber(portionNumber + 1)} } >
                     next
-                </button>
+                </Button>
+            }
+            { //Задаём количество юзеров на странице
+                <div className={classes.users__on__page}>
+                    <span>Users on page</span><br/>
+                    <input type="number" min="1" max="30"
+                               onChange={onSizeChange} defaultValue={props.pageSize}/>
+                    <Button variant={"outlined"} size={"small"}
+                            sx={{minWidth: 25, marginLeft: 1, marginTop: 1, height: 25}}
+                            color={'inherit'}
+                            onClick={onPageSizeChanged}>ok</Button>
+                </div>
             }
         </div>
     );
