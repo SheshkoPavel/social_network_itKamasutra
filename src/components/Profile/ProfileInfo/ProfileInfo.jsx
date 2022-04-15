@@ -3,6 +3,7 @@ import './ProfileInfo.scss';
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from './../../../assets/images/cat_ava.jpg'
 import ProfileStatus from "./ProfileStatus";
+import Button from "@mui/material/Button";
 
 const ProfileInfo = (props) => {
 
@@ -13,10 +14,10 @@ const ProfileInfo = (props) => {
     }
 
     const onProfilePhotoSelected = (e) => {
+        setEditMode(false);
         if(e.target.files.length) {
             props.savePhoto(e.target.files[0]);
         }
-        setEditMode(false);
     }
 
     return (
@@ -30,7 +31,10 @@ const ProfileInfo = (props) => {
                     onDoubleClick={() =>{setEditMode(true)} }
                 />
                 { editMode === true && props.profile.userId === 22856
-                    ? <div ><input type="file"  onChange={onProfilePhotoSelected}  /></div>
+                    ? <div >
+                        <Button variant={'text'} size={'small'} onClick={() => setEditMode(false)}>Cancel</Button>
+                        <input type="file"  onChange={onProfilePhotoSelected} className={'input__file__color'} />
+                    </div>
                     : null
                 }
 

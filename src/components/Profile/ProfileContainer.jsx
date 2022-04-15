@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Profile from "./Profile";
-import {connect, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getStatus, getUserProfile, savePhoto, updateStatus} from "../../redux/profileReducer";
 import {useParams} from "react-router-dom";
 
