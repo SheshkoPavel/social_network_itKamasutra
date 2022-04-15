@@ -14,7 +14,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";*/
 
 //Ленивая загрузка компонент. Обязательно располагать после всех импортов
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const Profile = React.lazy(() => import('./components/Profile/Profile'));
 
 //My UserID is 22856
 
@@ -30,9 +30,9 @@ function App() {
             <div className='content'>
                 <Suspense fallback={<Preloader/>}>
                 <Routes>
-                    <Route path="/" element={<ProfileContainer  />}/>
-                    <Route path="/profile/*" element={<ProfileContainer  />}/>
-                    <Route path="/profile/:userId" element={<ProfileContainer  />}/>
+                    <Route path="/" element={<Profile  />}/>
+                    <Route path="/profile/*" element={<Profile  />}/>
+                    <Route path="/profile/:userId" element={<Profile  />}/>
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path='/users' element={<UsersPage /> }/>
