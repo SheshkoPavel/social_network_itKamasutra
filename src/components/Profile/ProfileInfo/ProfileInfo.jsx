@@ -9,10 +9,12 @@ const ProfileInfo = (props) => {
 
     const [editMode, setEditMode] = useState(false);
 
+    // Если нет никакого профайла в props, то показывается Preloader
     if (!props.profile) {
         return <Preloader/>
     }
 
+    //Смена аватара
     const onProfilePhotoSelected = (e) => {
         setEditMode(false);
         if(e.target.files.length) {
@@ -30,7 +32,8 @@ const ProfileInfo = (props) => {
                     className={'avatar__large'}
                     onDoubleClick={() =>{setEditMode(true)} }
                 />
-                { editMode === true && props.profile.userId === 22856
+                { //Кнопки для смены аватара
+                    editMode === true && props.profile.userId === 22856
                     ? <div >
                         <Button variant={'text'} size={'small'} onClick={() => setEditMode(false)}>Cancel</Button>
                         <input type="file"  onChange={onProfilePhotoSelected} className={'input__file__color'} />

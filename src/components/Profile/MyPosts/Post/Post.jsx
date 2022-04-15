@@ -13,11 +13,11 @@ const Post = (props) => {
         <div className={classes.item}>
             <img
                 src="https://cf.ltkcdn.net/socialnetworking/images/orig/168646-425x425-Cat-Avatar-Primary.jpg"
-                alt="avatar1"
+                alt="avatar"
             />
             {props.message}
             <div>
-                <span>Like count {likes}</span>
+                <span className={classes.likes__count}>Likes count {likes}</span>
                 <button
                     className={classes.like__buttons}
                     onClick={likeUp}>

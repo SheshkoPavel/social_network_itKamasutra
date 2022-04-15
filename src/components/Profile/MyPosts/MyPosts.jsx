@@ -14,6 +14,7 @@ const MyPosts = (props) => {
         dispatch(addPostActionCreator(newPostText))
     }
 
+    //Вывод массива фейковых постов (работа со state)
     let postElements = posts.map((post) => (<Post message={post.message} likes={post.likesCount} key={post.id} />))
 
     return (

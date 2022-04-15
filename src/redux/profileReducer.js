@@ -8,9 +8,9 @@ const profile_SAVE_PHOTO_SUCCESS = 'profile_SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     posts: [
-        {id: 1, message: "Privet volchara", likesCount: 10},
+        {id: 1, message: "Привет, братва!", likesCount: 10},
         {id: 2, message: "Нормально ты заряжаешь", likesCount: 3},
-        {id: 3, message: "Прокинул через пропсы", likesCount: 7}
+        {id: 3, message: "Ну, красавчик", likesCount: 7}
     ],
     profile: null,
     status: ""
