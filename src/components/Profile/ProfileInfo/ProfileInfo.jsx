@@ -16,6 +16,7 @@ const ProfileInfo = (props) => {
         if(e.target.files.length) {
             props.savePhoto(e.target.files[0]);
         }
+        setEditMode(false);
     }
 
     return (
@@ -29,7 +30,7 @@ const ProfileInfo = (props) => {
                     onDoubleClick={() =>{setEditMode(true)} }
                 />
                 { editMode === true && props.profile.userId === 22856
-                    ? <div><input type="file"  onChange={onProfilePhotoSelected} onClick={() => setEditMode(false)} /></div>
+                    ? <div ><input type="file"  onChange={onProfilePhotoSelected}  /></div>
                     : null
                 }
 

@@ -1,37 +1,44 @@
 import React, {useEffect} from 'react';
 import Profile from "./Profile";
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {getStatus, getUserProfile, savePhoto, updateStatus} from "../../redux/profileReducer";
-import {useMatch} from "react-router-dom";
-
-const ProfileURLMatch = (props) => {
-    const match = useMatch('/profile/:userId/');
-    return <ProfileContainer {...props} match={match}/>;
-};
+import {useParams} from "react-router-dom";
 
 const ProfileContainer = (props) => {
 
+    const dispatch = useDispatch()
+    const getUserProfileF = (user) => {
+        dispatch(getUserProfile(user))
+    }
+    const getStatusF = (user) => {
+        dispatch(getStatus(user))
+    }
+    const updateStatusF = (status) => {
+        dispatch(updateStatus(status))
+    }
+    const savePhotoF = (file) => {
+        dispatch(savePhoto(file))
+    }
+
+// Check is any user id in URL. If not, push my profile
+    let { userId } = useParams()
+    console.log (userId)
+
     useEffect(() => {
-        let userId = props.match
-            ? props.match.params.userId
+        let user = !!userId
+            ? userId
             : 22856;
-        props.getUserProfile(userId);
-        props.getStatus(userId);
-    }, [props.match]);
+        getUserProfileF(user);
+        getStatusF(user);
+    }, [userId]);
 
     return (
         <Profile {...props}
-                 profile={props.profile}
-                 status={props.status}
-                 updateStatus={props.updateStatus}
-                 savePhoto={props.savePhoto}
+                 updateStatus={updateStatusF}
+                 savePhoto={savePhotoF}
         />
     );
 };
 
-const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    status: state.profilePage.status
-});
 
-export default connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto})(ProfileURLMatch)
+export default ProfileContainer;
