@@ -7,14 +7,15 @@ import Login from "./components/Login/Login";
 import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./redux/authReducer";
 import Preloader from "./components/Common/Preloader/Preloader";
-import UsersPage from "./components/Users/UsersPage";
 import HeaderComponent from "./components/Header/Header.component";
+import Profile from "./components/Profile/Profile";
+
 /*import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";*/
+";*/
 
 //Ленивая загрузка компонент. Обязательно располагать после всех импортов
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
-const Profile = React.lazy(() => import('./components/Profile/Profile'));
+const UsersPage = React.lazy(() => import('./components/Users/UsersPage'))
 
 //My UserID is 22856
 
