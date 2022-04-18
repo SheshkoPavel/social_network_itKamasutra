@@ -18,6 +18,7 @@ const News = (props) => {
         useEffect(() => {getNews()},[])*/
     const dispatch = useDispatch()
 
+    //Загрузка новостей с сервера, после загрузки компоненты (замена классового метода componentDidMount)
     useEffect(() => {
         dispatch(getNewsThunk())
     }, [])
@@ -40,7 +41,8 @@ const News = (props) => {
 
     return (
         <div>
-            { state === false
+            { //Отслеживаю состояние, чтобы понять какую из кнопок показывать
+                state === false
                 ? <div className={'news__btns__right'}> <Button startIcon={<ImportExportIcon />}
                                                               onClick={onDescClick}
                                                               color="secondary" >
@@ -56,7 +58,7 @@ const News = (props) => {
             }
 
             <div>
-                {
+                { //Вывод массива новостей
                     newsElements
                 }
             </div>

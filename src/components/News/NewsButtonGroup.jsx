@@ -12,6 +12,7 @@ import SendIcon from "@mui/icons-material/Send";
 const NewsButtonGroup = (props) => {
     const dispatch = useDispatch()
 
+    //Задаю кастомный вид кнопок для MUI
     const theme = createTheme({
         palette: {
             myColorGroup: {
@@ -24,7 +25,8 @@ const NewsButtonGroup = (props) => {
     return (
         <div>
             <ThemeProvider theme={theme}>
-                { props.editMode === false
+                { // В зависимости от того, включен ли режим редактирования, вывожу нужные кнопки
+                    props.editMode === false
                     ?   <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
                         <Button startIcon={<EditIcon />}
                                 color={"myColorGroup"}

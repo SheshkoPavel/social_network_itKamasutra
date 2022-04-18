@@ -3,7 +3,7 @@ import profileReducer, {addPostActionCreator, deletePost} from "./profileReducer
 let action = addPostActionCreator('testText');
 let state = {
     posts: [
-        {id: 1, message: "Privet volchara", likesCount: 10},
+        {id: 1, message: "Privet drug", likesCount: 10},
         {id: 2, message: "Нормально ты заряжаешь", likesCount: 3},
         {id: 3, message: "Прокинул через пропсы", likesCount: 7}
     ]
@@ -14,7 +14,7 @@ test('test profileReducer. add new post. length must be 4', () => {
 /*    let action = addPostActionCreator('text');
     let state = {
         posts: [
-            {id: 1, message: "Privet volchara", likesCount: 10},
+            {id: 1, message: "Privet drug", likesCount: 10},
             {id: 2, message: "Нормально ты заряжаешь", likesCount: 3},
             {id: 3, message: "Прокинул через пропсы", likesCount: 7}
         ]

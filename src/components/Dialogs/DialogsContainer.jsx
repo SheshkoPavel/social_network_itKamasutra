@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
+//Устаревший подход. Оставил, чтобы показать, что ознакомлен
+
 const mapStateToProps = (state) => {
     return {
         dialogPage: state.dialogPage

@@ -96,7 +96,4 @@ export const updateNewsPostTextThunk = (updateIdAndMessage) => async (dispatch) 
     } catch (error) {
         console.log('Check server. ' + error);
     }
-/*    dispatch(updateNewsPostAC(updateIdAndMessage));
-    let response = await newsAPI.getNews();
-    dispatch(setNewsAC(response.data));*/
 }

@@ -4,10 +4,11 @@ import NewsButtonGroup from "./NewsButtonGroup";
 import TextField from '@mui/material/TextField';
 
 const NewsItem = (props) => {
-
+//Отслеживаю включен ли режим редактирования
     const [editMode, setEditMode] = useState(false)
     const [editText, setEditText] = useState(props.newsText);
 
+//Начальный текст, при нажатии на кнопку отмены, устанавливается в поле инпута
     const startState = props.newsText;
 
     useEffect(() => {
@@ -26,7 +27,8 @@ const NewsItem = (props) => {
 
             <img className={'news_image'} src={props.imageURL} alt="news"/>
             <div>
-                {editMode === false ? <div> {props.newsText} </div>
+                { //Отслеживаю что показывать, текст, или поле редактирования
+                    editMode === false ? <div> {props.newsText} </div>
                                     : <TextField onChange={onNewsTextChange}
                                                  size={"small"}
                                                  helperText="Please enter new text"
