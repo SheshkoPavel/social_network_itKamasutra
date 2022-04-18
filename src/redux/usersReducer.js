@@ -104,12 +104,16 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 
 export const follow = (userId) => {
     return async (dispatch) => {
-        dispatch(toggleIsFollowingInProgress(true, userId));
-        let data = await usersAPI.followUser(userId)
-        if (data.resultCode === 0) {
-            dispatch(followUser(userId));
+        try {
+            dispatch(toggleIsFollowingInProgress(true, userId));
+            let data = await usersAPI.followUser(userId)
+            if (data.resultCode === 0) {
+                dispatch(followUser(userId));
+            }
+            dispatch(toggleIsFollowingInProgress(false, userId));
+        } catch (error) {
+            console.log (error)
         }
-        dispatch(toggleIsFollowingInProgress(false, userId));
     }
 };
 export const unFollow = (userId) => {

@@ -56,12 +56,16 @@ export const getAuthUserData = () => async (dispatch) => {
 };
 
 export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
-    let response = await authAPI.login(email, password, rememberMe, captcha);
-    if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData());
-    }
-    if (response.data.resultCode === 10){
-        dispatch(getCaptchaURL());
+    try {
+        let response = await authAPI.login(email, password, rememberMe, captcha);
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserData());
+        }
+        if (response.data.resultCode === 10) {
+            dispatch(getCaptchaURL());
+        }
+    } catch (error) {
+        console.log(error);
     }
 };
 
