@@ -4,8 +4,8 @@ import {useForm} from "react-hook-form";
 const LoginForm = (props) => {
 
         const { register, handleSubmit, formState: { errors } } = useForm({});
+        // При нажатии на кнопку submit получается объект с зарегистрированнными полями
         const onSubmit = data => {
-
             props.login(data.email, data.password, data.rememberMe, data.captcha);
         }
 
@@ -19,12 +19,12 @@ const LoginForm = (props) => {
 
                 <div ><input type="checkbox" {...register("rememberMe", { required: false })}/> remember me </div>
 
-
-                {
+                { //Если с сервера приходит captcha, то показываем её
                         props.captcha ? <div>   <br/>
                                                 <img src={props.captcha.captcha} alt={'captcha'} /><br/>
                                                 Please, enter the captcha <br/>
                                                 <input type="text" {...register("captcha", {required: true})} />
+                                                <div style={{color: "rebeccapurple"}}> {errors.captcha?.type === 'required' && "You must enter a captcha"} </div>
                                         </div>
                                         : null
                 }
