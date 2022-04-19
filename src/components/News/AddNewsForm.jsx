@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {addNewNewsThunk} from "../../redux/newsReducer";
 import "./AddNewsForm.scss"
+import {Input} from "@mui/material";
 
 const AddNewsForm = ({setActive}) => {
 
@@ -34,7 +35,7 @@ const AddNewsForm = ({setActive}) => {
                 {errors.imageURL?.type === 'required' && "You must write something"}
             </div>
 
-            <input type="submit" />
+            <Input type="submit" value={'SEND'} className={'send__btn'} />
         </form>
     );
 };
