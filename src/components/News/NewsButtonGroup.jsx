@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ThemeProvider} from "@emotion/react";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -8,6 +8,7 @@ import {createTheme} from "@mui/material/styles";
 import {ButtonGroup} from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import SendIcon from "@mui/icons-material/Send";
+import MyMUIModal from "../Common/MyModal/MyMUIModal";
 
 const NewsButtonGroup = (props) => {
     const dispatch = useDispatch()
@@ -21,6 +22,9 @@ const NewsButtonGroup = (props) => {
             },
         },
     });
+
+    //Активация модального окна
+    const [modalActive, setModalActive] = useState(false)
 
     return (
         <div>
@@ -36,9 +40,16 @@ const NewsButtonGroup = (props) => {
                         </Button>
                         <Button startIcon={<DeleteIcon />}
                                 color={"myColorGroup"}
-                                onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}  >
+                                onClick={ ()=> setModalActive(true)}
+                          >
                             delete
                         </Button>
+                        <MyMUIModal active={modalActive} setActive={setModalActive} header={'Delete News Post?'}>
+                            <div style={{textAlign: 'center', margin: 10}}>
+                                    <Button color={'error'} variant={'contained'} size={"medium"}
+                                            onClick={()=> {dispatch(deleteNewsPostThunk(props.id))}}>Yes</Button>
+                            </div>
+                        </MyMUIModal>
                         </ButtonGroup>
                     : <ButtonGroup variant="outlined" size="small" aria-label="outlined button group">
                         <Button startIcon={<EditIcon />}

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Backdrop, Box, Fade, Modal, Typography} from "@mui/material";
+import {Backdrop, Box, Fade, Modal, ThemeProvider, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
+import {createTheme} from "@mui/material/styles";
 
 const MyMuiModal = ({active, setActive, children, header}) => {
 
@@ -17,34 +18,49 @@ const MyMuiModal = ({active, setActive, children, header}) => {
         p: 3
     }
 
+    //Кастомный стиль для кнопки
+    const theme = createTheme({
+        palette: {
+            myColorGroup: {
+                main: '#72648b',
+                contrastText: '#fff'
+            },
+        },
+    });
+
     return (
         <div>
-            <Modal aria-labelledby="transition-modal-title"
-                   aria-describedby="transition-modal-description"
-                   open={active}
-                   onClose={() => setActive(false)}
-                   closeAfterTransition
-                   BackdropComponent={Backdrop}
-                   BackdropProps={{
-                       timeout: 500,
-                   }}
+            <ThemeProvider theme={theme}>
+                <Modal aria-labelledby="transition-modal-title"
+                       aria-describedby="transition-modal-description"
+                       open={active}
+                       onClose={() => setActive(false)}
+                       closeAfterTransition
+                       BackdropComponent={Backdrop}
+                       BackdropProps={{
+                           timeout: 500,
+                       }}
+                >
 
-            >
-            <Fade in={active}>
-                <Box sx={style}>
-                    <Typography id="transition-modal-title" variant="h6" component="h2">
-                        { //Текст заголовка модального окна
-                            header}
-                    </Typography>
+                    <Fade in={active}>
+                        <Box sx={style}>
+                            <Typography id="transition-modal-title" variant="h6" component="h2">
+                                { //Текст заголовка модального окна
+                                    header}
+                            </Typography>
 
-                    {children}
+                            <div>{children}</div>
 
-                    <div style={{textAlign: "right"}}>
-                    <Button onClick={ () => setActive(false) } >Close</Button>
-                    </div>
-                </Box>
-            </Fade>
-            </Modal>
+                            <div style={{textAlign: "right"}}>
+                                <Button onClick={() => setActive(false)} size={'small'}
+                                        color={'myColorGroup'} variant={'outlined'}>
+                                    Close
+                                </Button>
+                            </div>
+                        </Box>
+                    </Fade>
+                </Modal>
+            </ThemeProvider>
         </div>
     );
 };
