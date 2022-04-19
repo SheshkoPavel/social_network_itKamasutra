@@ -4,14 +4,18 @@ import {useDispatch} from "react-redux";
 import {addNewNewsThunk} from "../../redux/newsReducer";
 import "./AddNewsForm.scss"
 
-const AddNewsForm = () => {
+const AddNewsForm = ({setActive}) => {
 
     const dispatch = useDispatch()
+    //Добавляем новость и закрываем модальное окно
     const addNewNews = (data) => {
-        dispatch(addNewNewsThunk(data))
+        dispatch(addNewNewsThunk(data));
+        setActive(false);
     }
 
+    //Настройка формы
     const { register, handleSubmit, formState: { errors } } = useForm()
+    //При нажатии на кнопку отправить формируется объект data с зарегистрированными полями (newsText, imageURL)
     const onSubmit = data => addNewNews(data)
 
     return (

@@ -5,6 +5,7 @@ import {getNewsDESCThunk, getNewsThunk} from "../../redux/newsReducer";
 import AddNewsForm from "./AddNewsForm";
 import Button from "@mui/material/Button";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import MyMuiModal from "../Common/MyModal/MyMUIModal";
 
 const News = (props) => {
     /*    Local server request for take news
@@ -23,6 +24,7 @@ const News = (props) => {
         dispatch(getNewsThunk())
     }, [])
 
+    //Получаю массив новостей из store (newsReducer)
     const news = useSelector(state => state.newsPage.news)
 
     const [state, setState] = useState(false)
@@ -35,9 +37,13 @@ const News = (props) => {
         setState(false);
     }
 
+    //Преобразуем массив новостей в массив JSX элементов
     let newsElements = news.map((n, index) => <NewsItem key={n.id} id={n.id}
                                                         newsText={n.newsText} imageURL={n.imageURL}
                                                         index={index + 1}    />)
+
+    //Состояние модального окна
+    const [modalActive, setModalActive] = useState(false)
 
     return (
         <div>
@@ -57,14 +63,22 @@ const News = (props) => {
                 </div>
             }
 
+            {/*Кнопка вызова модального окна*/}
+            <Button variant={'outlined'} style={{marginLeft: 5}} size={'small'}
+                    onClick={() => setModalActive(true)}>
+                Create news
+            </Button>
+            <MyMuiModal active={modalActive} setActive={setModalActive} header={'Add News Post'}>
+                <AddNewsForm setActive={setModalActive} />
+            </MyMuiModal>
+
+
             <div>
                 { //Вывод массива новостей
                     newsElements
                 }
             </div>
-            <div style={{textAlign: "center"}}>
-                <AddNewsForm />
-            </div>
+
         </div>
     );
 };
