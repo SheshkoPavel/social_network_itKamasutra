@@ -64,7 +64,7 @@ const News = (props) => {
             }
 
             {/*Кнопка вызова модального окна*/}
-            <Button variant={'outlined'} style={{marginLeft: 5}} size={'small'}
+            <Button variant={'outlined'} style={{marginLeft: 5}} size={'small'} color={'secondary'}
                     onClick={() => setModalActive(true)}>
                 Create news
             </Button>
