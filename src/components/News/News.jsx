@@ -6,6 +6,7 @@ import AddNewsForm from "./AddNewsForm";
 import Button from "@mui/material/Button";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import MyMuiModal from "../Common/MyModal/MyMUIModal";
+import Preloader from "../Common/Preloader/Preloader";
 
 const News = (props) => {
     /*    Local server request for take news
@@ -26,6 +27,7 @@ const News = (props) => {
 
     //Получаю массив новостей из store (newsReducer)
     const news = useSelector(state => state.newsPage.news)
+    const isLoadingNews = useSelector(state => state.newsPage.isLoading)
 
     const [state, setState] = useState(false)
     const onDescClick = () => {
@@ -74,9 +76,12 @@ const News = (props) => {
 
 
             <div>
-                { //Вывод массива новостей
-                    newsElements
+                {
+                    isLoadingNews === true ? <div><Preloader /> {newsElements} </div> : newsElements
                 }
+{/*                { //Вывод массива новостей
+                    newsElements
+                }*/}
             </div>
 
         </div>
