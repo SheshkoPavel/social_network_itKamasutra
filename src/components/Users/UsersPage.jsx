@@ -20,6 +20,7 @@ const UsersPage = (props) => {
     const currentPage = useSelector(state => state.usersPage.currentPage)
     const isFetching = useSelector(state => state.usersPage.isFetching)
 
+    //Подгрузка пользователей
     const dispatch = useDispatch()
     useEffect(()=> dispatch(getUsersThunkCreator(currentPage, pageSize)), [])
 

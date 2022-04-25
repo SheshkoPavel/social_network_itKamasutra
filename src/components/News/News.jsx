@@ -29,6 +29,7 @@ const News = (props) => {
     const news = useSelector(state => state.newsPage.news)
     const isLoadingNews = useSelector(state => state.newsPage.isLoading)
 
+    //Состояние для кнопки фильтрации по возразстанию/убыванию
     const [state, setState] = useState(false)
     const onDescClick = () => {
         dispatch(getNewsDESCThunk());
@@ -76,12 +77,10 @@ const News = (props) => {
 
 
             <div>
-                {
+                { //Вывод массива новостей. Если в процессе загрузки показываем Preloader и начальное состояние(массив)
                     isLoadingNews === true ? <div><Preloader /> {newsElements} </div> : newsElements
                 }
-{/*                { //Вывод массива новостей
-                    newsElements
-                }*/}
+
             </div>
 
         </div>

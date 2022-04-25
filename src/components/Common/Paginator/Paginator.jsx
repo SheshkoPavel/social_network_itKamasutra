@@ -65,7 +65,7 @@ const Paginator = (props) => {
                                     {p}
                                 </Button>
             })}
-            { //Если количество порций для вывода больше текущего номера порции, то показываем кнопку
+            { //Если количество порций для вывода больше текущего номера порции, то показываем кнопку 'Next'
                 portionCount > portionNumber &&
                 <Button variant={"outlined"} size={"small"} onClick={()=> {setPortionNumber(portionNumber + 1)} } >
                     next

@@ -6,7 +6,6 @@ import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
 import {newsReducer} from "./newsReducer";
 
-
 /*To use saga, I should ->  npm install redux-saga
 then
 
@@ -19,6 +18,11 @@ sagaMiddleware.run(rootSaga)
 
 Look at lessons of list we create. Also, we need create root.saga.ts  */
 
+/* // With Chrome extension, but work with bugs
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+*/
+
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogsReducer,
@@ -26,15 +30,16 @@ let reducers = combineReducers({
     auth: authReducer,
     newsPage: newsReducer
 });
-
-
-/* // With Chrome extension, but work with bugs
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+/* Сейчас настраивается так
+const store = configureStore({
+    reducer: {
+        posts: postsReducer,
+        users: usersReducer
+    }
+})
+И используется @reduxjs/toolkit вместо библиотеки redux
 */
-
-
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;
 

@@ -24,7 +24,8 @@ const Users = (props) => {
             <Paginator totalItemsCount={totalUsersCount} pageSize={pageSize}
                        currentPage={currentPage} />
             <div>
-                {users.map((el) => <User user={el} key={el.id} /> ) }
+                {// Отрисовка массива пользователей
+                    users.map((el) => <User user={el} key={el.id} /> ) }
             </div>
         </div>
     );
