@@ -8,6 +8,8 @@ import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 
 
+//This is final version for showing
+
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
