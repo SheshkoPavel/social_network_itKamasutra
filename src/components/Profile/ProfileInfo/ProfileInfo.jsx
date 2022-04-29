@@ -49,7 +49,7 @@ const ProfileInfo = (props) => {
 
                     <div className={'underline'}>Looking for a job:</div> {props.profile.lookingForAJob === true
                     ? props.profile.lookingForAJobDescription
-                    : "Yes, i want work in IntexSoft"} <br/>
+                    : "Yes, i want work in IT"} <br/>
                     <br/>
 
                 </div>
