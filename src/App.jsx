@@ -31,11 +31,11 @@ function App() {
             <div className='content'>
                 <Suspense fallback={<Preloader/>}>
                 <Routes>
-                    <Route path="/" element={<Profile  />}/>
+                    <Route path="/" element={<News />}/>
                     <Route path="/profile/*" element={<Profile  />}/>
                     <Route path="/profile/:userId" element={<Profile  />}/>
                     <Route path="/dialogs/*" element={<DialogsContainer  />}/>
-                    <Route path="/news" element={<News/>}/>
+                    <Route path="/news" element={<News />}/>
                     <Route path='/users' element={<UsersPage /> }/>
                     <Route path='/login' element={<Login /> }/>
                 </Routes>
