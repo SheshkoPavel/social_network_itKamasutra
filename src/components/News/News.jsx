@@ -29,6 +29,8 @@ const News = (props) => {
     const news = useSelector(state => state.newsPage.news)
     const isLoadingNews = useSelector(state => state.newsPage.isLoading)
 
+    const isAuth = useSelector(state => state.auth.isAuth)
+
     //Состояние для кнопки фильтрации по возразстанию/убыванию
     const [state, setState] = useState(false)
     const onDescClick = () => {
@@ -66,15 +68,17 @@ const News = (props) => {
                 </div>
             }
 
-            {/*Кнопка вызова модального окна*/}
-            <Button variant={'outlined'} style={{marginLeft: 5}} size={'small'} color={'secondary'}
-                    onClick={() => setModalActive(true)}>
-                Create news
-            </Button>
+            {/*Кнопка вызова модального окна*/
+                isAuth ? <Button variant={'outlined'} style={{marginLeft: 5}} size={'small'} color={'secondary'}
+                             onClick={() => setModalActive(true)}>
+                            Create news
+                            </Button>
+                        : null
+            }
+
             <MyMuiModal active={modalActive} setActive={setModalActive} header={'Add News Post'}>
                 <AddNewsForm setActive={setModalActive} />
             </MyMuiModal>
-
 
             <div>
                 { //Вывод массива новостей. Если в процессе загрузки показываем Preloader и начальное состояние(массив)

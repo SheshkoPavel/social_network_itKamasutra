@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './NewsItem.scss'
 import NewsButtonGroup from "./NewsButtonGroup";
 import TextField from '@mui/material/TextField';
+import {useSelector} from "react-redux";
 
 const NewsItem = (props) => {
 //Отслеживаю включен ли режим редактирования
@@ -10,6 +11,8 @@ const NewsItem = (props) => {
 
 //Начальный текст, при нажатии на кнопку отмены, устанавливается в поле инпута
     const startState = props.newsText;
+
+    const isAuth = useSelector(state => state.auth.isAuth)
 
     useEffect(() => {
         setEditText(props.newsText)
@@ -40,16 +43,18 @@ const NewsItem = (props) => {
                                                   />
 
                 }
-                <div className={'buttons__group'}>
-                    <NewsButtonGroup editMode={editMode}
-                                     setEditMode={setEditMode}
-                                     editText={editText}
-                                     setEditText={setEditText}
-                                     id={props.id}
-                                     startState={startState}
-                    />
-                </div>
 
+                {
+                    isAuth ? <div className={'buttons__group'}>
+                        <NewsButtonGroup editMode={editMode}
+                                         setEditMode={setEditMode}
+                                         editText={editText}
+                                         setEditText={setEditText}
+                                         id={props.id}
+                                         startState={startState}
+                        />
+                    </div> : null
+                }
             </div>
         </div>
     );
